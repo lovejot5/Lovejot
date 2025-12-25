@@ -1,149 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lovejot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lovejot - Portfolio</title>
 
-<style>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
     body {
-        margin: 0;
-        padding: 20px;
-        font-family: "Inter", sans-serif;
-        background: #f8f3ed;
-        color: #3b2f2f;
-        display: flex;
-        justify-content: center;
-        animation: fadeIn 1.2s ease;
+      background: #f5e8dc;
+      color: #4b3b2a;
     }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    a { color: inherit; text-decoration: none; }
 
+    .container {
+      max-width: 900px;
+      margin: 3rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Card */
     .card {
-        width: 420px;
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(18px);
-        border-radius: 18px;
-        padding: 25px;
-        margin-bottom: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        animation: floatUp 0.7s ease;
+      background: rgba(255, 245, 230, 0.85);
+      backdrop-filter: blur(14px);
+      padding: 2rem;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s ease forwards;
     }
 
-    @keyframes floatUp {
-        from { transform: translateY(10px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
+    .card:nth-child(2) { animation-delay: 0.25s; }
 
-    .icon {
-        width: 95px;
-        height: 95px;
-        border-radius: 50%;
-        display: block;
-        margin: 0 auto 10px auto;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    /* Avatar */
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
 
     .name {
-        text-align: center;
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 12px;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-top: 5px;
     }
 
-    .about-text {
-        font-size: 15px;
-        line-height: 1.6;
-        margin-bottom: 15px;
-        text-align: center;
+    .card p {
+      font-size: 1rem;
+      text-align: center;
+      line-height: 1.6;
+      max-width: 85%;
     }
 
+    /* Contacts Toggle */
     .toggle-btn {
-        width: 100%;
-        padding: 10px;
-        background: #b08968;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        font-size: 15px;
-        cursor: pointer;
-        transition: 0.2s;
+      background: #d4b483;
+      border: none;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      transition: all .3s ease;
+      margin-top: 0.5rem;
     }
 
     .toggle-btn:hover {
-        background: #946c4f;
+      background: #c3a36f;
+      transform: scale(1.05);
     }
 
-    .contact-box {
-        margin-top: 15px;
-        padding: 12px;
-        background: #f5e9df;
-        border-radius: 10px;
-        display: none;
+    .contacts-wrapper {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      width: 100%;
+      transition: max-height .5s ease, opacity .5s ease;
+      margin-top: 1rem;
+    }
+
+    .contacts-wrapper.active {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    .contacts-list {
+      list-style: none;
+      width: 100%;
+      padding-left: 5px;
     }
 
     .contact-item {
-        margin: 5px 0;
-        font-size: 15px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
     }
 
-    .contact-item i {
-        font-size: 17px;
+    .icon-box {
+      width: 38px;
+      height: 38px;
+      background: #d4b483;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #fff;
+      flex-shrink: 0;
+      font-size: 1.2rem;
     }
 
-    .section-title {
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 10px;
+    /* Products */
+    .products {
+      width: 100%;
+      align-items: center;
     }
 
-    .product-item {
-        margin-bottom: 10px;
-        font-size: 16px;
-        padding: 8px 0;
+    .products h2 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1.3rem;
     }
-</style>
 
-<script>
-function toggleContact() {
-    const box = document.getElementById("contactBox");
-    box.style.display = box.style.display === "block" ? "none" : "block";
-}
-</script>
+    .service-list {
+      list-style: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .service-item {
+      background: rgba(212,180,131,0.22);
+      padding: 1rem;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all .3s ease;
+    }
+
+    .service-item:hover {
+      background: rgba(212,180,131,0.38);
+      transform: scale(1.02);
+    }
+
+    .service-item-title {
+      font-size: 1.25rem;
+      font-weight: 550;
+      margin-bottom: 0.4rem;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .container { margin: 2rem 1rem; }
+      .card p { max-width: 100%; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- MAIN PROFILE -->
-<div class="card">
-    <img src="./assets/images/my-avatar.png" class="icon">
+  <div class="container">
 
-    <div class="name">Lovejot</div>
+    <!-- ABOUT ME CARD -->
+    <div class="card">
+      <img src="https://cdn.discordapp.com/attachments/1395061501055995947/1453648858583404596/my-avatar.png?ex=694e377f&is=694ce5ff&hm=eacd11e7142516ac466aeb6ed380c894d0237d3cac0eea6cdc431b94965fce09&"
+           alt="Avatar" class="avatar">
 
-    <div class="about-text">
-        Built from cracked spines of old books, late-night thoughts,  
-        and the art of being both seen and hidden.
+      <div class="name">Lovejot</div>
+
+      <p>Built from cracked spines of old books, late-night thoughts, and the art of being both seen and hidden.</p>
+
+      <!-- Toggle Button -->
+      <button class="toggle-btn" onclick="toggleContacts()">
+        <ion-icon name="call-outline"></ion-icon> Show Contact Info
+      </button>
+
+      <!-- Contacts -->
+      <div class="contacts-wrapper">
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div>
+              <p>Email</p>
+              <a href="mailto:real.lovejot@gmail.com">real.lovejot@gmail.com</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="logo-discord"></ion-icon>
+            </div>
+            <div>
+              <p>Discord</p>
+              <a href="https://discord.gg/RqQsbNE7G4" target="_blank">Join Discord Server</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
     </div>
 
-    <button class="toggle-btn" onclick="toggleContact()">Show / Hide Contact</button>
 
-    <div class="contact-box" id="contactBox">
-        <div class="contact-item"><i>📧</i> real.lovejot@gmail.com</div>
-        <div class="contact-item"><i>💬</i> Discord: https://discord.gg/RqQsbNE7G4</div>
+    <!-- PRODUCTS CARD -->
+    <div class="card products">
+      <h2>Products</h2>
+
+      <ul class="service-list">
+
+        <li class="service-item" onclick="window.open('https://discord.gg/RqQsbNE7G4','_blank')">
+          <h4 class="service-item-title">October</h4>
+          <p>A minimalistic and aesthetic bot with smooth music and utility features.</p>
+        </li>
+
+        <li class="service-item" onclick="window.open('https://discord.gg/RqQsbNE7G4','_blank')">
+          <h4 class="service-item-title">Daisy</h4>
+          <p>Feature-rich music bot designed for seamless streaming and entertainment.</p>
+        </li>
+
+        <li class="service-item" onclick="window.open('https://discord.gg/RqQsbNE7G4','_blank')">
+          <h4 class="service-item-title">Silvy</h4>
+          <p>Multipurpose bot for moderation, fun commands, and server management.</p>
+        </li>
+
+      </ul>
     </div>
-</div>
 
-<!-- PRODUCTS -->
-<div class="card">
-    <div class="section-title">Products</div>
+  </div>
 
-    <div class="product-item">• October — Multipurpose Bot</div>
-    <div class="product-item">• Daisy — Music Bot</div>
-    <div class="product-item">• Silvy — Utility Bot</div>
-</div>
+  <script>
+    function toggleContacts() {
+      const box = document.querySelector('.contacts-wrapper');
+      box.classList.toggle('active');
+    }
+  </script>
 
 </body>
 </html>
