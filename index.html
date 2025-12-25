@@ -1,271 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lovejot - Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lovejot</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Ionicons -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-  <style>
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
+<style>
     body {
-      background: #f5e8dc;
-      color: #4b3b2a;
+        background: #f3e8d9;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #3e2723;
+        display: flex;
+        justify-content: center;
+        padding: 40px 10px;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      max-width: 900px;
-      margin: 3rem auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    /* Card */
     .card {
-      background: rgba(255, 245, 230, 0.85);
-      backdrop-filter: blur(14px);
-      padding: 2rem;
-      border-radius: 22px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.9s ease forwards;
+        width: 100%;
+        max-width: 650px;
+        background: rgba(255, 255, 255, 0.65);
+        padding: 25px;
+        border-radius: 25px;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        animation: fadeIn 1.1s ease;
+        margin-bottom: 20px;
     }
 
-    .card:nth-child(2) { animation-delay: 0.25s; }
-
-    /* Avatar */
-    .avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
-    .name {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-top: 5px;
+    .icon {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto 15px auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        animation: pop 0.9s ease;
     }
 
-    .card p {
-      font-size: 1rem;
-      text-align: center;
-      line-height: 1.6;
-      max-width: 85%;
+    @keyframes pop {
+        0% { transform: scale(0.7); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
     }
 
-    /* Contacts Toggle */
-    .toggle-btn {
-      background: #d4b483;
-      border: none;
-      color: #fff;
-      padding: 0.6rem 1.2rem;
-      border-radius: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-      transition: all .3s ease;
-      margin-top: 0.5rem;
+    h1 {
+        text-align: center;
+        margin: 0;
+        font-size: 28px;
+        font-weight: 600;
     }
 
-    .toggle-btn:hover {
-      background: #c3a36f;
-      transform: scale(1.05);
+    h2 {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 10px;
+        font-weight: 600;
     }
 
-    .contacts-wrapper {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      width: 100%;
-      transition: max-height .5s ease, opacity .5s ease;
-      margin-top: 1rem;
+    .about-text {
+        text-align: center;
+        margin: 15px 0 20px 0;
+        font-size: 16px;
+        line-height: 1.6;
     }
 
-    .contacts-wrapper.active {
-      max-height: 500px;
-      opacity: 1;
+    .btn {
+        display: block;
+        margin: 10px auto;
+        padding: 10px 22px;
+        background: #a1734a;
+        color: white;
+        border-radius: 10px;
+        text-align: center;
+        width: fit-content;
+        cursor: pointer;
+        transition: 0.25s;
+        font-size: 15px;
+        border: none;
     }
 
-    .contacts-list {
-      list-style: none;
-      width: 100%;
-      padding-left: 5px;
+    .btn:hover {
+        background: #8d623d;
+        transform: translateY(-2px);
+    }
+
+    .contact-box {
+        display: none;
+        margin-top: 15px;
+        animation: fadeIn 0.6s ease;
     }
 
     .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
+        margin: 6px 0;
+        font-size: 15px;
+        text-align: left;
     }
 
-    .icon-box {
-      width: 38px;
-      height: 38px;
-      background: #d4b483;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      color: #fff;
-      flex-shrink: 0;
-      font-size: 1.2rem;
+    .product-title {
+        text-align: center;
+        font-size: 23px;
+        font-weight: 600;
+        margin-bottom: 15px;
     }
 
-    /* Products */
-    .products {
-      width: 100%;
-      align-items: center;
+    .product-card {
+        margin-bottom: 18px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #d8c2a9;
     }
 
-    .products h2 {
-      font-size: 1.9rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 1.3rem;
+    .product-name {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: left;
     }
 
-    .service-list {
-      list-style: none;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    .product-desc {
+        font-size: 15px;
+        margin: 6px 0 10px 0;
+        text-align: left;
     }
 
-    .service-item {
-      background: rgba(212,180,131,0.22);
-      padding: 1rem;
-      border-radius: 14px;
-      cursor: pointer;
-      transition: all .3s ease;
+    .invite-btn {
+        display: inline-block;
+        padding: 8px 15px;
+        background: #70431d;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.25s;
+        font-size: 14px;
     }
 
-    .service-item:hover {
-      background: rgba(212,180,131,0.38);
-      transform: scale(1.02);
+    .invite-btn:hover {
+        background: #5a3416;
     }
 
-    .service-item-title {
-      font-size: 1.25rem;
-      font-weight: 550;
-      margin-bottom: 0.4rem;
-    }
+</style>
 
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
+<script>
+function toggleContact() {
+    const box = document.getElementById("contactDetails");
+    box.style.display = box.style.display === "block" ? "none" : "block";
+}
+</script>
 
-    @media (max-width: 768px) {
-      .container { margin: 2rem 1rem; }
-      .card p { max-width: 100%; }
-    }
-  </style>
 </head>
 
 <body>
 
-  <div class="container">
+<!-- ========================= FIRST CARD ========================= -->
+<div class="card">
 
-    <!-- ABOUT ME CARD -->
-    <div class="card">
-      <img src="https://cdn.discordapp.com/attachments/1395061501055995947/1453648858583404596/my-avatar.png?ex=694e377f&is=694ce5ff&hm=eacd11e7142516ac466aeb6ed380c894d0237d3cac0eea6cdc431b94965fce09&"
-           alt="Avatar" class="avatar">
+    <img src="https://cdn.discordapp.com/attachments/1395061501055995947/1453648858583404596/my-avatar.png?ex=694e377f&is=694ce5ff&hm=eacd11e7142516ac466aeb6ed380c894d0237d3cac0eea6cdc431b94965fce09&" 
+         class="icon">
 
-      <div class="name">Lovejot</div>
+    <h1>Lovejot</h1>
 
-      <p>Built from cracked spines of old books, late-night thoughts, and the art of being both seen and hidden.</p>
-
-      <!-- Toggle Button -->
-      <button class="toggle-btn" onclick="toggleContacts()">
-        <ion-icon name="call-outline"></ion-icon> Show Contact Info
-      </button>
-
-      <!-- Contacts -->
-      <div class="contacts-wrapper">
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-            <div>
-              <p>Email</p>
-              <a href="mailto:real.lovejot@gmail.com">real.lovejot@gmail.com</a>
-            </div>
-          </li>
-
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="logo-discord"></ion-icon>
-            </div>
-            <div>
-              <p>Discord</p>
-              <a href="https://discord.gg/RqQsbNE7G4" target="_blank">Join Discord Server</a>
-            </div>
-          </li>
-
-        </ul>
-      </div>
+    <div class="about-text">
+        Built from cracked spines of old books, late-night thoughts,  
+        and the art of being both seen and hidden.
     </div>
 
+    <button class="btn" onclick="toggleContact()">Show Contact Details</button>
 
-    <!-- PRODUCTS CARD -->
-    <div class="card products">
-      <h2>Products</h2>
-
-      <ul class="service-list">
-
-        <li class="service-item" onclick="window.open('https://discord.gg/RqQsbNE7G4','_blank')">
-          <h4 class="service-item-title">October</h4>
-          <p>A minimalistic and aesthetic bot with smooth music and utility features.</p>
-        </li>
-
-        <li class="service-item" onclick="window.open('https://discord.gg/RqQsbNE7G4','_blank')">
-          <h4 class="service-item-title">Daisy</h4>
-          <p>Feature-rich music bot designed for seamless streaming and entertainment.</p>
-        </li>
-
-        <li class="service-item" onclick="window.open('https://discord.gg/RqQsbNE7G4','_blank')">
-          <h4 class="service-item-title">Silvy</h4>
-          <p>Multipurpose bot for moderation, fun commands, and server management.</p>
-        </li>
-
-      </ul>
+    <div class="contact-box" id="contactDetails">
+        <div class="contact-item"><strong>Email:</strong> real.lovejot@gmail.com</div>
+        <div class="contact-item"><strong>Discord:</strong> https://discord.gg/RqQsbNE7G4</div>
     </div>
 
-  </div>
+</div>
 
-  <script>
-    function toggleContacts() {
-      const box = document.querySelector('.contacts-wrapper');
-      box.classList.toggle('active');
-    }
-  </script>
+
+<!-- ========================= SECOND CARD ========================= -->
+<div class="card">
+
+    <div class="product-title">Products</div>
+
+    <!-- Product 1 -->
+    <div class="product-card">
+        <div class="product-name">Silvy</div>
+        <div class="product-desc">
+            A multipurpose Discord bot designed to deliver performance, convenience,  
+            and smooth interactions across servers.
+        </div>
+        <a class="invite-btn" href="https://discord.com/oauth2/authorize?client_id=1391111880461910097&permissions=8&integration_type=0&scope=bot" target="_blank">
+            Invite Silvy
+        </a>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+        <div class="product-name">October</div>
+        <div class="product-desc">
+            A clean and aesthetic Discord experience built for  
+            music, control, and minimalistic functionality.
+        </div>
+        <a class="invite-btn" href="https://discord.com/oauth2/authorize?client_id=1128750014613704754&permissions=8&integration_type=0&scope=bot" target="_blank">
+            Invite October
+        </a>
+    </div>
+
+</div>
 
 </body>
 </html>
