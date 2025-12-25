@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lovejot</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: "Inter", sans-serif;
+        background: #f8f3ed;
+        color: #3b2f2f;
+        display: flex;
+        justify-content: center;
+        animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .card {
+        width: 420px;
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(18px);
+        border-radius: 18px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        animation: floatUp 0.7s ease;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(10px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .icon {
+        width: 95px;
+        height: 95px;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto 10px auto;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .name {
+        text-align: center;
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    .about-text {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .toggle-btn {
+        width: 100%;
+        padding: 10px;
+        background: #b08968;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .toggle-btn:hover {
+        background: #946c4f;
+    }
+
+    .contact-box {
+        margin-top: 15px;
+        padding: 12px;
+        background: #f5e9df;
+        border-radius: 10px;
+        display: none;
+    }
+
+    .contact-item {
+        margin: 5px 0;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .contact-item i {
+        font-size: 17px;
+    }
+
+    .section-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .product-item {
+        margin-bottom: 10px;
+        font-size: 16px;
+        padding: 8px 0;
+    }
+</style>
+
+<script>
+function toggleContact() {
+    const box = document.getElementById("contactBox");
+    box.style.display = box.style.display === "block" ? "none" : "block";
+}
+</script>
+</head>
+
+<body>
+
+<!-- MAIN PROFILE -->
+<div class="card">
+    <img src="./assets/images/my-avatar.png" class="icon">
+
+    <div class="name">Lovejot</div>
+
+    <div class="about-text">
+        Built from cracked spines of old books, late-night thoughts,  
+        and the art of being both seen and hidden.
+    </div>
+
+    <button class="toggle-btn" onclick="toggleContact()">Show / Hide Contact</button>
+
+    <div class="contact-box" id="contactBox">
+        <div class="contact-item"><i>📧</i> real.lovejot@gmail.com</div>
+        <div class="contact-item"><i>💬</i> Discord: https://discord.gg/RqQsbNE7G4</div>
+    </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="card">
+    <div class="section-title">Products</div>
+
+    <div class="product-item">• October — Multipurpose Bot</div>
+    <div class="product-item">• Daisy — Music Bot</div>
+    <div class="product-item">• Silvy — Utility Bot</div>
+</div>
+
+</body>
+</html>
