@@ -40,31 +40,6 @@
       flex-direction: column;
       gap: 3rem;
       padding: 0 1rem;
-      position: relative;
-    }
-
-    /* Dark/Light Toggle Button */
-    .mode-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #d4b483;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
-
-    .mode-toggle:hover {
-      background: #c3a36f;
-      transform: scale(1.1);
     }
 
     /* Card styling */
@@ -101,8 +76,9 @@
     }
 
     .icon {
-      font-size: 4rem;
-      color: #d4b483;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
     }
 
     .name {
@@ -161,6 +137,8 @@
       align-items: center;
       margin-bottom: 1rem;
       gap: 1rem;
+      text-align: left;
+      width: 100%;
     }
 
     .icon-box {
@@ -255,23 +233,6 @@
       color: #4b3b2a;
     }
 
-    /* Dark mode */
-    body.dark {
-      background: #3e2f20;
-      color: #f5e8dc;
-    }
-
-    body.dark .card {
-      background: rgba(62, 47, 32, 0.85);
-      color: #f5e8dc;
-    }
-
-    body.dark .toggle-btn,
-    body.dark .invite-btn,
-    body.dark .mode-toggle {
-      background: #a07b4b;
-    }
-
     @media (max-width: 768px) {
       .container {
         margin: 2rem 1rem;
@@ -291,16 +252,11 @@
 
 <body>
 
-  <!-- Dark/Light Mode Toggle -->
-  <button class="mode-toggle" onclick="toggleMode()">
-    <ion-icon name="moon-outline" id="mode-icon"></ion-icon>
-  </button>
-
   <div class="container">
 
     <!-- About Me Embed -->
     <div class="card">
-      <img src="https://i.imgur.com/2KkO7Ib.jpeg" alt="Lovejot" class="icon" style="border-radius:50%;width:80px;height:80px;">
+      <img src="https://i.imgur.com/2KkO7Ib.jpeg" alt="Lovejot" class="icon">
       <div class="name">Lovejot</div>
       <p>Built from cracked spines of old books, late-night thoughts, and the art of being both seen and hidden.</p>
 
@@ -353,16 +309,6 @@
     function toggleContacts() {
       const wrapper = document.querySelector('.contacts-wrapper');
       wrapper.classList.toggle('active');
-    }
-
-    function toggleMode() {
-      document.body.classList.toggle('dark');
-      const icon = document.getElementById('mode-icon');
-      if (document.body.classList.contains('dark')) {
-        icon.name = "sunny-outline";
-      } else {
-        icon.name = "moon-outline";
-      }
     }
   </script>
 </body>
