@@ -6,12 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lovejot - Portfolio</title>
 
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Ionicons -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   <style>
+    /* General */
     * {
       margin: 0;
       padding: 0;
@@ -22,11 +25,7 @@
     body {
       background: #f5e8dc;
       color: #4b3b2a;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 2rem;
+      transition: background 0.3s, color 0.3s;
     }
 
     a {
@@ -35,28 +34,186 @@
     }
 
     .container {
+      max-width: 900px;
+      margin: 3rem auto;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
+      gap: 3rem;
+      padding: 0 1rem;
     }
 
+    /* Card styling */
     .card {
       background: rgba(255, 245, 230, 0.85);
       backdrop-filter: blur(12px);
       padding: 2rem;
-      border-radius: 22px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      animation: fadeUp 0.8s ease forwards;
       opacity: 0;
       transform: translateY(20px);
-      margin: 0 1rem; /* Space on left and right */
+      animation: fadeUp 0.8s forwards;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .card:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.4s;
+      align-items: flex-start;
+    }
+
+    .icon {
+      font-size: 4rem;
+      color: #d4b483;
+    }
+
+    .name {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .card p {
+      font-size: 1rem;
+      text-align: center;
+      line-height: 1.6;
+      max-width: 80%;
+    }
+
+    /* Toggle contacts */
+    .toggle-btn {
+      background: #d4b483;
+      border: none;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background: #c3a36f;
+      transform: scale(1.05);
+    }
+
+    .contacts-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      opacity: 0;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .contacts-wrapper.active {
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    .contacts-list {
+      list-style: none;
+      width: 100%;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      gap: 1rem;
+    }
+
+    .icon-box {
+      width: 35px;
+      height: 35px;
+      background: #d4b483;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .contact-item div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Products */
+    .products h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-list {
+      list-style: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .service-item {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #d4b483;
+    }
+
+    .service-item:hover {
+      background: rgba(212, 180, 131, 0.1);
+      transform: scale(1.01);
+    }
+
+    .service-item-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      border-bottom: 2px solid #d4b483;
+      display: inline-block;
+      padding-bottom: 2px;
+    }
+
+    .service-item p {
+      font-size: 1rem;
+      text-align: left;
+      margin-bottom: 0.5rem;
+    }
+
+    .invite-btn {
+      background: #d4b483;
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      width: fit-content;
+      transition: all 0.3s ease;
+    }
+
+    .invite-btn:hover {
+      background: #c3a36f;
+      transform: scale(1.05);
     }
 
     @keyframes fadeUp {
@@ -66,151 +223,42 @@
       }
     }
 
-    /* Avatar */
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    }
-
-    .name {
-      font-size: 2rem;
-      font-weight: 600;
+    /* Footer */
+    footer {
       text-align: center;
+      margin: 3rem 0 1rem 0;
+      font-size: 0.9rem;
+      color: #4b3b2a;
     }
 
-    .about-text {
-      text-align: center;
-      line-height: 1.6;
-      max-width: 80%;
+    /* Dark mode */
+    body.dark {
+      background: #3e2f20;
+      color: #f5e8dc;
     }
 
-    /* Toggle Button */
-    .toggle-btn {
-      background: #d4b483;
-      border: none;
-      color: white;
-      padding: 0.6rem 1.2rem;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: 500;
+    body.dark .card {
+      background: rgba(62, 47, 32, 0.85);
+      color: #f5e8dc;
     }
 
-    .toggle-btn:hover {
-      background: #bb9a6c;
-      transform: scale(1.05);
-    }
-
-    /* Contact List */
-    .contacts-wrapper {
-      width: 100%;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: 0.5s ease;
-    }
-
-    .contacts-wrapper.active {
-      max-height: 300px;
-      opacity: 1;
-      margin-top: 0.5rem;
-    }
-
-    .contacts-list {
-      list-style: none;
-      width: 100%;
-      margin-top: 0.5rem;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
-      width: 100%;
-      text-align: left;
-    }
-
-    .icon-box {
-      width: 38px;
-      height: 38px;
-      background: #d4b483;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      flex-shrink: 0;
-    }
-
-    /* Products */
-    .products-card {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.5rem;
-      margin: 0 1rem; /* Space left and right */
-    }
-
-    .products-title {
-      font-size: 1.8rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .product-block {
-      width: 100%;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #d4b483; /* Separator line */
-    }
-
-    .product-block:last-child {
-      border-bottom: none; /* Remove line after last product */
-    }
-
-    .product-name {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      text-align: left;
-    }
-
-    .product-desc {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-bottom: 0.5rem;
-      text-align: left;
-    }
-
-    .invite-btn {
-      background: #d4b483;
-      color: white;
-      padding: 0.45rem 1rem;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      transition: 0.3s;
-    }
-
-    .invite-btn:hover {
-      background: #bb9a6c;
-      transform: scale(1.05);
+    body.dark .toggle-btn,
+    body.dark .invite-btn {
+      background: #a07b4b;
     }
 
     @media (max-width: 768px) {
-      .card,
-      .products-card {
-        margin: 0 0.5rem;
+      .container {
+        margin: 2rem 1rem;
       }
 
-      .about-text {
+      .card p {
         max-width: 100%;
+      }
+
+      .service-item p,
+      .service-item-title {
+        text-align: left;
       }
     }
   </style>
@@ -220,19 +268,15 @@
 
   <div class="container">
 
-    <!-- ABOUT ME CARD -->
+    <!-- About Me Embed -->
     <div class="card">
-      <img class="avatar"
-        src="https://cdn.discordapp.com/attachments/1395061501055995947/1453648858583404596/my-avatar.png?ex=694e377f&is=694ce5ff&hm=eacd11e7142516ac466aeb6ed380c894d0237d3cac0eea6cdc431b94965fce09&"
-        alt="Avatar">
-
+      <img src="https://cdn.discordapp.com/attachments/1395061501055995947/1453648858583404596/my-avatar.png" alt="Lovejot" class="icon" style="border-radius:50%;width:80px;height:80px;">
       <div class="name">Lovejot</div>
+      <p>Built from cracked spines of old books, late-night thoughts, and the art of being both seen and hidden.</p>
 
-      <p class="about-text">
-        Built from cracked spines of old books, late-night thoughts, and the art of being both seen and hidden.
-      </p>
-
-      <button class="toggle-btn" onclick="toggleContacts()">Show Contact Details</button>
+      <button class="toggle-btn" onclick="toggleContacts()">
+        <ion-icon name="mail-outline"></ion-icon> Show Contacts
+      </button>
 
       <div class="contacts-wrapper">
         <ul class="contacts-list">
@@ -243,54 +287,48 @@
               <a href="mailto:real.lovejot@gmail.com">real.lovejot@gmail.com</a>
             </div>
           </li>
-
           <li class="contact-item">
             <div class="icon-box"><ion-icon name="logo-discord"></ion-icon></div>
             <div>
               <p>Discord</p>
-              <a href="https://discord.gg/RqQsbNE7G4" target="_blank">Join Server</a>
+              <a href="https://discord.gg/RqQsbNE7G4" target="_blank">Join Discord</a>
             </div>
           </li>
         </ul>
       </div>
     </div>
 
-    <!-- PRODUCTS CARD -->
-    <div class="card products-card">
-      <div class="products-title">Products</div>
-
-      <div class="product-block">
-        <div class="product-name">Silvy</div>
-        <div class="product-desc">
-          A multipurpose Discord bot designed for smooth moderation, performance and utility.
-        </div>
-        <button class="invite-btn"
-          onclick="window.open('https://discord.com/oauth2/authorize?client_id=1391111880461910097&permissions=8&integration_type=0&scope=bot','_blank')">
-          Invite Silvy
-        </button>
-      </div>
-
-      <div class="product-block">
-        <div class="product-name">October</div>
-        <div class="product-desc">
-          A clean and aesthetic Discord experience built for music, control and minimalistic features.
-        </div>
-        <button class="invite-btn"
-          onclick="window.open('https://discord.com/oauth2/authorize?client_id=1128750014613704754&permissions=8&integration_type=0&scope=bot','_blank')">
-          Invite October
-        </button>
-      </div>
-
+    <!-- Products Embed -->
+    <div class="card products">
+      <h2>Products</h2>
+      <ul class="service-list">
+        <li class="service-item">
+          <h4 class="service-item-title">October</h4>
+          <p>A minimalistic and aesthetic bot with smooth music and utility features.</p>
+          <button class="invite-btn" onclick="window.open('https://discord.com/oauth2/authorize?client_id=1128750014613704754&permissions=8&integration_type=0&scope=bot','_blank')">Invite</button>
+        </li>
+        <li class="service-item">
+          <h4 class="service-item-title">Silvy</h4>
+          <p>Multipurpose bot for moderation, fun commands, and server management.</p>
+          <button class="invite-btn" onclick="window.open('https://discord.com/oauth2/authorize?client_id=1391111880461910097&permissions=8&integration_type=0&scope=bot','_blank')">Invite</button>
+        </li>
+      </ul>
     </div>
 
   </div>
 
+  <footer>© 2025 Lovejot. All rights reserved.</footer>
+
   <script>
     function toggleContacts() {
-      document.querySelector(".contacts-wrapper").classList.toggle("active");
+      const wrapper = document.querySelector('.contacts-wrapper');
+      wrapper.classList.toggle('active');
     }
-  </script>
 
+    // Optional: Dark mode toggle
+    const body = document.body;
+    // body.classList.add('dark'); // Uncomment to enable dark mode
+  </script>
 </body>
 
 </html>
