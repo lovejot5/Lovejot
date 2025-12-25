@@ -40,6 +40,31 @@
       flex-direction: column;
       gap: 3rem;
       padding: 0 1rem;
+      position: relative;
+    }
+
+    /* Dark/Light Toggle Button */
+    .mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #d4b483;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .mode-toggle:hover {
+      background: #c3a36f;
+      transform: scale(1.1);
     }
 
     /* Card styling */
@@ -57,6 +82,8 @@
       transform: translateY(20px);
       animation: fadeUp 0.8s forwards;
       transition: transform 0.3s, box-shadow 0.3s;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .card:hover {
@@ -188,9 +215,6 @@
       font-size: 1.2rem;
       font-weight: 500;
       margin-bottom: 0.3rem;
-      border-bottom: 2px solid #d4b483;
-      display: inline-block;
-      padding-bottom: 2px;
     }
 
     .service-item p {
@@ -243,7 +267,8 @@
     }
 
     body.dark .toggle-btn,
-    body.dark .invite-btn {
+    body.dark .invite-btn,
+    body.dark .mode-toggle {
       background: #a07b4b;
     }
 
@@ -266,11 +291,16 @@
 
 <body>
 
+  <!-- Dark/Light Mode Toggle -->
+  <button class="mode-toggle" onclick="toggleMode()">
+    <ion-icon name="moon-outline" id="mode-icon"></ion-icon>
+  </button>
+
   <div class="container">
 
     <!-- About Me Embed -->
     <div class="card">
-      <img src="https://i.imgur.com/2KkO7Ib.jpeg" alt="Lovejot" class="icon" style="border-radius:50%;width:80px;height:80px;">
+      <img src="https://cdn.discordapp.com/attachments/1395061501055995947/1453648858583404596/my-avatar.png" alt="Lovejot" class="icon" style="border-radius:50%;width:80px;height:80px;">
       <div class="name">Lovejot</div>
       <p>Built from cracked spines of old books, late-night thoughts, and the art of being both seen and hidden.</p>
 
@@ -325,9 +355,15 @@
       wrapper.classList.toggle('active');
     }
 
-    // Optional: Dark mode toggle
-    const body = document.body;
-    // body.classList.add('dark'); // Uncomment to enable dark mode
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+      const icon = document.getElementById('mode-icon');
+      if (document.body.classList.contains('dark')) {
+        icon.name = "sunny-outline";
+      } else {
+        icon.name = "moon-outline";
+      }
+    }
   </script>
 </body>
 
