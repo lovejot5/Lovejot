@@ -14,7 +14,6 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
   <style>
-    /* General */
     * {
       margin: 0;
       padding: 0;
@@ -26,6 +25,11 @@
       background: #f5e8dc;
       color: #4b3b2a;
       transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      background: #1a1a1a;
+      color: #ececec;
     }
 
     a {
@@ -42,7 +46,29 @@
       padding: 0 1rem;
     }
 
-    /* Card styling */
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #d4b483;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 999;
+    }
+
+    body.dark .theme-toggle {
+      background: #b6935e;
+    }
+
+    /* Card */
     .card {
       background: rgba(255, 245, 230, 0.85);
       backdrop-filter: blur(12px);
@@ -61,18 +87,14 @@
       margin: 0 auto;
     }
 
+    body.dark .card {
+      background: rgba(40, 40, 40, 0.85);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+    }
+
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-    }
-
-    .card:nth-child(1) {
-      animation-delay: 0.2s;
-    }
-
-    .card:nth-child(2) {
-      animation-delay: 0.4s;
-      align-items: flex-start;
     }
 
     .icon {
@@ -94,7 +116,7 @@
       max-width: 80%;
     }
 
-    /* Toggle contacts */
+    /* Contacts Toggle */
     .toggle-btn {
       background: #d4b483;
       border: none;
@@ -108,8 +130,11 @@
       transition: all 0.3s ease;
     }
 
+    body.dark .toggle-btn {
+      background: #b6935e;
+    }
+
     .toggle-btn:hover {
-      background: #c3a36f;
       transform: scale(1.05);
     }
 
@@ -153,9 +178,8 @@
       flex-shrink: 0;
     }
 
-    .contact-item div {
-      display: flex;
-      flex-direction: column;
+    body.dark .icon-box {
+      background: #b6935e;
     }
 
     /* Products */
@@ -184,21 +208,17 @@
       border-bottom: 1px solid #d4b483;
     }
 
+    body.dark .service-item {
+      border-bottom: 1px solid #9b7a4d;
+    }
+
     .service-item:hover {
       background: rgba(212, 180, 131, 0.1);
       transform: scale(1.01);
     }
 
-    .service-item-title {
-      font-size: 1.2rem;
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-    }
-
-    .service-item p {
-      font-size: 1rem;
-      text-align: left;
-      margin-bottom: 0.5rem;
+    body.dark .service-item:hover {
+      background: rgba(182, 146, 94, 0.1);
     }
 
     .invite-btn {
@@ -213,8 +233,11 @@
       transition: all 0.3s ease;
     }
 
+    body.dark .invite-btn {
+      background: #b6935e;
+    }
+
     .invite-btn:hover {
-      background: #c3a36f;
       transform: scale(1.05);
     }
 
@@ -225,7 +248,6 @@
       }
     }
 
-    /* Footer */
     footer {
       text-align: center;
       margin: 3rem 0 1rem 0;
@@ -233,32 +255,28 @@
       color: #4b3b2a;
     }
 
-    @media (max-width: 768px) {
-      .container {
-        margin: 2rem 1rem;
-      }
-
-      .card p {
-        max-width: 100%;
-      }
-
-      .service-item p,
-      .service-item-title {
-        text-align: left;
-      }
+    body.dark footer {
+      color: #c7c7c7;
     }
   </style>
 </head>
 
 <body>
 
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <ion-icon name="moon-outline"></ion-icon> Theme
+  </button>
+
   <div class="container">
 
-    <!-- About Me Embed -->
+    <!-- About -->
     <div class="card">
       <img src="https://i.imgur.com/2KkO7Ib.jpeg" alt="Lovejot" class="icon">
       <div class="name">Lovejot</div>
-      <p>Built from cracked spines of old books, late-night thoughts, and the art of being both seen and hidden.</p>
+
+      <p>
+        I’m a hobby-driven developer who enjoys creating smooth interfaces and building small but meaningful projects. I work with basic JavaScript, Python, and HTML, and I put extra focus on clean UI design. I like exploring new ideas, improving what I build, and turning simple concepts into polished experiences.
+      </p>
 
       <button class="toggle-btn" onclick="toggleContacts()">
         <ion-icon name="mail-outline"></ion-icon> Show Contacts
@@ -284,20 +302,36 @@
       </div>
     </div>
 
-    <!-- Products Embed -->
+    <!-- Products -->
     <div class="card products">
       <h2>Products</h2>
       <ul class="service-list">
+
         <li class="service-item">
           <h4 class="service-item-title">October</h4>
-          <p>A minimalistic and aesthetic bot with smooth music and utility features.</p>
-          <button class="invite-btn" onclick="window.open('https://discord.com/oauth2/authorize?client_id=1128750014613704754&permissions=8&integration_type=0&scope=bot','_blank')">Invite</button>
+          <p>
+            A polished, minimalistic system designed for smooth playback, clean responses,  
+            and purpose-built automation that stays out of your way while doing its job perfectly.
+          </p>
+          <button class="invite-btn"
+            onclick="window.open('https://discord.com/oauth2/authorize?client_id=1128750014613704754&permissions=8&integration_type=0&scope=bot','_blank')">
+            Invite
+          </button>
         </li>
+
         <li class="service-item">
           <h4 class="service-item-title">Silvy</h4>
-          <p>Multipurpose bot for moderation, fun commands, and server management.</p>
-          <button class="invite-btn" onclick="window.open('https://discord.com/oauth2/authorize?client_id=1391111880461910097&permissions=8&integration_type=0&scope=bot','_blank')">Invite</button>
+          <p>
+            A multi-functional assistant built with modularity and efficiency in mind—  
+            combining moderation, utility, customization, and operational tools in a stable,  
+            performance-driven environment.
+          </p>
+          <button class="invite-btn"
+            onclick="window.open('https://discord.com/oauth2/authorize?client_id=1391111880461910097&permissions=8&integration_type=0&scope=bot','_blank')">
+            Invite
+          </button>
         </li>
+
       </ul>
     </div>
 
@@ -307,10 +341,14 @@
 
   <script>
     function toggleContacts() {
-      const wrapper = document.querySelector('.contacts-wrapper');
-      wrapper.classList.toggle('active');
+      document.querySelector('.contacts-wrapper').classList.toggle('active');
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
     }
   </script>
+
 </body>
 
 </html>
