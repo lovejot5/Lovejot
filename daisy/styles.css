@@ -199,7 +199,7 @@ a {
 ========================================= */
 
 .hero {
-  padding-top: 180px;
+  padding-top: 200px; /* CRITICAL */
   padding-bottom: 120px;
   text-align: center;
 }
