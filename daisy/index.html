@@ -1,34 +1,199 @@
-<!DOCTYPE html>
+l<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Daisy – Discord Music Bot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daisy — Discord Music Bot</title>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./styles.css" />
 
-  <!-- GSAP Animations -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </head>
+
 <body>
 
-  <section class="hero">
-    <h1 class="fade">Ready to upgrade your server?</h1>
+<!-- ===============================
+     HEADER (STATIC / GLOBAL)
+================================ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="./assets/logo.png" alt="Daisy" />
+    </div>
 
-    <p class="fade delay">
-      Daisy is a high-performance Discord music bot built for clean audio,
-      stability, and modern communities.
+    <nav class="nav desktop-nav">
+      <a id="navHome">Home</a>
+      <a id="navCommands">Commands</a>
+      <a id="navDocs">Docs</a>
+    </nav>
+
+    <a id="inviteBtn" class="btn btn-primary desktop-invite">
+      Add to Discord
+    </a>
+
+    <button id="menuBtn" class="menu-btn">☰</button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a id="mNavHome" class="active">Home</a>
+    <a id="mNavCommands">Commands</a>
+    <a id="mNavDocs">Docs</a>
+
+    <a id="mInviteBtn" class="btn btn-primary">
+      Add to Discord
+    </a>
+  </div>
+</header>
+
+<!-- ===============================
+     HERO SECTION
+================================ -->
+<section class="hero">
+  <div class="hero-content fade">
+    <h1>
+      Feel the <span class="accent">Music</span><br />
+      in Your Server
+    </h1>
+
+    <p class="hero-sub">
+      Daisy is a modern Discord music bot built for clean audio,
+      smooth performance, and reliable 24/7 playback.
     </p>
 
-    <div class="actions fade delay2">
-      <a href="#" class="btn primary">Add to Discord</a>
-      <a href="#" class="btn secondary">Support Server</a>
+    <div class="hero-buttons">
+      <a id="heroInviteBtn" class="btn btn-primary">
+        Add to Discord
+      </a>
+      <a id="heroCommandsBtn" class="btn btn-secondary">
+        View Commands
+      </a>
     </div>
-  </section>
 
-  <!-- Scripts -->
-  <script src="animations.js"></script>
+    <div class="hero-badges">
+      <span>⚡ No Lag</span>
+      <span>🔊 High Quality</span>
+      <span>🎵 24/7 Mode</span>
+      <span>🛡 Safe & Secure</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===============================
+     FEATURES
+================================ -->
+<section class="features">
+  <h2 class="section-title fade">Why Daisy?</h2>
+
+  <div class="features-grid">
+    <div class="feature-card fade">
+      <h3>24/7 Music</h3>
+      <p>
+        Keep music running around the clock without interruptions.
+        Daisy stays in your voice channel as long as you need.
+      </p>
+    </div>
+
+    <div class="feature-card fade">
+      <h3>High Quality Audio</h3>
+      <p>
+        Enjoy crisp, clean sound with optimized streaming and
+        minimal latency across all supported platforms.
+      </p>
+    </div>
+
+    <div class="feature-card fade">
+      <h3>Easy Commands</h3>
+      <p>
+        Simple and intuitive commands designed to work fast,
+        without confusion or unnecessary complexity.
+      </p>
+    </div>
+
+    <div class="feature-card fade">
+      <h3>Stable & Secure</h3>
+      <p>
+        Built with reliability in mind. Daisy is designed to stay
+        online and perform consistently.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===============================
+     CALL TO ACTION
+================================ -->
+<section class="cta fade">
+  <h2>Ready to upgrade your server?</h2>
+  <p>
+    Join thousands of servers already using Daisy
+    for high-quality music playback.
+  </p>
+
+  <a id="ctaInviteBtn" class="btn btn-primary large">
+    Add Daisy to Discord
+  </a>
+</section>
+
+<!-- ===============================
+     FOOTER
+================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="./assets/logo.png" alt="Daisy" />
+      <p>A Discord music bot — done right.</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>Product</h4>
+        <a id="fCommands">Commands</a>
+        <a id="fDocs">Docs</a>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <a id="fInvite">Invite Bot</a>
+        <a id="fSupport">Support Server</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom" id="footerText"></div>
+</footer>
+
+<!-- ===============================
+     SCRIPTS
+================================ -->
+<script src="./config.js"></script>
+<script src="./animations.js"></script>
+
+<script>
+  /* Bind extra buttons using config */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!window.DAISY_CONFIG) return;
+
+    const map = {
+      heroInviteBtn: DAISY_CONFIG.links.invite,
+      heroCommandsBtn: DAISY_CONFIG.links.commands,
+      ctaInviteBtn: DAISY_CONFIG.links.invite,
+
+      fCommands: DAISY_CONFIG.links.commands,
+      fDocs: DAISY_CONFIG.links.docs,
+      fInvite: DAISY_CONFIG.links.invite,
+      fSupport: DAISY_CONFIG.links.support,
+    };
+
+    Object.keys(map).forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.href = map[id];
+    });
+  });
+</script>
+
 </body>
 </html>
