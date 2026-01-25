@@ -1,27 +1,24 @@
-/* =========================================
-   Daisy – Animations & Interactions
-   No dashboard
-   Mobile + Desktop safe
-========================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-  /* ---------------------------------------
-     CONFIG BINDING
-  ---------------------------------------- */
   if (window.DAISY_CONFIG) {
     const cfg = window.DAISY_CONFIG;
 
-    // Desktop nav
+    // Desktop Nav
     const navHome = document.getElementById("navHome");
     const navCommands = document.getElementById("navCommands");
     const navDocs = document.getElementById("navDocs");
     const inviteBtn = document.getElementById("inviteBtn");
 
-    // Mobile nav
+    // Mobile Nav
     const mNavHome = document.getElementById("mNavHome");
     const mNavCommands = document.getElementById("mNavCommands");
     const mNavDocs = document.getElementById("mNavDocs");
     const mInviteBtn = document.getElementById("mInviteBtn");
+
+    // Hero / Footer
+    const heroInvite = document.getElementById("heroInvite");
+    const heroSupport = document.getElementById("heroSupport");
+    const footerInvite = document.getElementById("footerInvite");
+    const footerSupport = document.getElementById("footerSupport");
 
     if (navHome) navHome.href = cfg.links.home;
     if (navCommands) navCommands.href = cfg.links.commands;
@@ -32,6 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mNavCommands) mNavCommands.href = cfg.links.commands;
     if (mNavDocs) mNavDocs.href = cfg.links.docs;
     if (mInviteBtn) mInviteBtn.href = cfg.links.invite;
+
+    if (heroInvite) heroInvite.href = cfg.links.invite;
+    if (heroSupport) heroSupport.href = cfg.links.support;
+    if (footerInvite) footerInvite.href = cfg.links.invite;
+    if (footerSupport) footerSupport.href = cfg.links.support;
   }
 
   /* ---------------------------------------
@@ -74,28 +76,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ---------------------------------------
-     HERO FADE-IN (ON LOAD)
+     HERO LOAD ANIMATION
   ---------------------------------------- */
   const hero = document.querySelector(".hero");
 
   if (hero) {
     gsap.fromTo(
       hero,
-      { opacity: 0, y: 20 },
+      { opacity: 0, y: 24 },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.9,
         ease: "power3.out",
       }
     );
   }
 
   /* ---------------------------------------
-     BUTTON HOVER MICRO-ANIMATION
+     BUTTON MICRO-INTERACTIONS
   ---------------------------------------- */
   const buttons = document.querySelectorAll(
-    ".btn, .menu-btn-primary, .btn.primary.small"
+    ".btn, .menu-btn-primary"
   );
 
   buttons.forEach((btn) => {
@@ -117,17 +119,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ---------------------------------------
-     HEADER SCROLL EFFECT (SUBTLE)
+     HEADER SCROLL BEHAVIOR
   ---------------------------------------- */
   const header = document.querySelector(".header");
+  let lastScroll = 0;
 
   if (header) {
-    let lastScroll = 0;
-
     window.addEventListener("scroll", () => {
-      const current = window.scrollY;
+      const currentScroll = window.scrollY;
 
-      if (current > 40 && current > lastScroll) {
+      if (currentScroll > 60 && currentScroll > lastScroll) {
         gsap.to(header, {
           y: -10,
           opacity: 0.95,
@@ -143,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      lastScroll = current;
+      lastScroll = currentScroll;
     });
   }
 });
