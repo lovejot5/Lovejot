@@ -23,10 +23,10 @@
 
     <!-- Desktop Nav -->
     <nav class="nav-desktop">
-      <a id="navHome">Home</a>
-      <a id="navCommands">Commands</a>
-      <a id="navDocs">Docs</a>
-      <a class="btn primary small" id="inviteBtn">Add to Discord</a>
+      <a href="#" id="navHome">Home</a>
+      <a href="#" id="navCommands">Commands</a>
+      <a href="#" id="navDocs">Docs</a>
+      <a href="#" class="btn primary small" id="inviteBtn">Add to Discord</a>
     </nav>
 
     <!-- Mobile Button -->
@@ -35,10 +35,10 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a class="menu-item" id="mNavHome">Home</a>
-    <a class="menu-item" id="mNavCommands">Commands</a>
-    <a class="menu-item" id="mNavDocs">Docs</a>
-    <a class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
+    <a href="#" class="menu-item" id="mNavHome">Home</a>
+    <a href="#" class="menu-item" id="mNavCommands">Commands</a>
+    <a href="#" class="menu-item" id="mNavDocs">Docs</a>
+    <a href="#" class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
   </div>
 </header>
 
@@ -59,8 +59,8 @@
     </p>
 
     <div class="hero-actions">
-      <a class="btn primary" id="heroInvite">Add to Discord</a>
-      <a class="btn secondary" id="heroSupport">Support Server</a>
+      <a href="#" class="btn primary" id="heroInvite">Add to Discord</a>
+      <a href="#" class="btn secondary" id="heroSupport">Support Server</a>
     </div>
 
     <div class="hero-badges">
@@ -73,64 +73,62 @@
 </section>
 
 <!-- FEATURES -->
-<section>
+<section id="features">
   <h2 class="section-title">Powerful Features</h2>
 
   <div class="features-grid">
     <div class="feature-card">
-      <span class="feature-icon"></span>
       <h3>High Quality Audio</h3>
       <p>Crystal clear playback with stable streaming.</p>
     </div>
 
     <div class="feature-card">
-      <span class="feature-icon"></span>
       <h3>24/7 Mode</h3>
-      <p>Music stays even when everyone leaves.</p>
+      <p>Music stays online even when everyone leaves.</p>
     </div>
 
     <div class="feature-card">
-      <span class="feature-icon"></span>
       <h3>Easy Commands</h3>
-      <p>Simple and intuitive command system.</p>
+      <p>Simple, clean, and beginner-friendly commands.</p>
     </div>
 
     <div class="feature-card">
-      <span class="feature-icon"></span>
       <h3>Global Stability</h3>
-      <p>Optimized for low latency worldwide.</p>
+      <p>Low-latency playback optimized worldwide.</p>
     </div>
   </div>
 </section>
 
-<!-- TRUSTED -->
-<section>
+<!-- TRUST -->
+<section id="trust">
   <h2 class="section-title">Trusted by Communities</h2>
 
   <div class="stats-grid">
     <div class="stat">
-      <h3>450+</h3>
+      <h3 id="statServers">—</h3>
       <p>Servers</p>
     </div>
+
     <div class="stat">
-      <h3>200K+</h3>
+      <h3 id="statUsers">—</h3>
       <p>Users</p>
     </div>
+
     <div class="stat">
-      <h3>99.9%</h3>
+      <h3 id="statUptime">—</h3>
       <p>Uptime</p>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section>
+<section id="faq">
   <h2 class="section-title">Frequently Asked Questions</h2>
 
   <div class="faq">
     <details>
       <summary>Is Daisy free to use?</summary>
-      <p>Yes, Daisy is free and works out of the box.</p>
+      <p>Yes. Daisy is free and works instantly after inviting.</p>
     </details>
 
     <details>
@@ -140,7 +138,7 @@
 
     <details>
       <summary>Which platforms are supported?</summary>
-      <p>You can play music from popular streaming platforms.</p>
+      <p>Daisy supports popular music sources used on Discord.</p>
     </details>
   </div>
 </section>
@@ -150,19 +148,37 @@
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="footer-inner">
-    <strong>Daisy</strong>
-    <p>A Discord music bot — done right.</p>
 
-    <div class="footer-links">
-      <a href="./commands.html">Commands</a>
-      <a href="./docs.html">Docs</a>
-      <a id="footerInvite">Invite</a>
-      <a id="footerSupport">Support Server</a>
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        Daisy
+      </div>
+      <p>A Discord music bot — done right.</p>
     </div>
 
-    <span class="footer-copy">
-      © 2026 Daisy. All rights reserved.
-    </span>
+    <div class="footer-cols">
+      <div>
+        <h4>Navigation</h4>
+        <a href="#" id="fHome">Home</a>
+        <a href="#" id="fCommands">Commands</a>
+        <a href="#" id="fDocs">Docs</a>
+      </div>
+
+      <div>
+        <h4>Other</h4>
+        <a href="#" id="fInvite">Invite Bot</a>
+        <a href="#" id="fSupport">Support Server</a>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+
+    <div class="footer-copy" id="footerCopy"></div>
   </div>
 </footer>
 
@@ -171,12 +187,15 @@
 <script src="./animations.js"></script>
 
 <script>
+  /* Bind stats + footer text */
   if (window.DAISY_CONFIG) {
-    const c = DAISY_CONFIG.links;
-    document.getElementById("heroInvite").href = c.invite;
-    document.getElementById("heroSupport").href = c.support;
-    document.getElementById("footerInvite").href = c.invite;
-    document.getElementById("footerSupport").href = c.support;
+    const c = DAISY_CONFIG;
+
+    document.getElementById("statServers").textContent = c.stats.servers;
+    document.getElementById("statUsers").textContent = c.stats.users;
+    document.getElementById("statUptime").textContent = c.stats.uptime;
+
+    document.getElementById("footerCopy").textContent = c.footer.copyright;
   }
 </script>
 
