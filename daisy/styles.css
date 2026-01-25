@@ -23,13 +23,17 @@ a {
 }
 
 /* ---------- HEADER ---------- */
+
+/* ===============================
+   HEADER
+================================ */
 .header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  backdrop-filter: blur(14px);
-  background: rgba(6, 15, 28, 0.75);
+  backdrop-filter: blur(16px);
+  background: rgba(6, 15, 28, 0.85);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
@@ -46,19 +50,18 @@ a {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 600;
+  gap: 12px;
   font-size: 18px;
+  font-weight: 600;
 }
 
-.logo-dot {
-  width: 12px;
-  height: 12px;
+.logo-img {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
 }
 
-/* Desktop Navigation */
+/* Desktop Nav */
 .nav-desktop {
   display: flex;
   align-items: center;
@@ -67,46 +70,84 @@ a {
 
 .nav-desktop a {
   font-size: 14px;
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
 .nav-desktop a:hover {
   opacity: 1;
 }
 
-/* Mobile Menu Button */
+/* Mobile Button */
 .menu-btn {
   display: none;
   font-size: 22px;
-  background: none;
+  background: rgba(255,255,255,0.08);
   border: none;
   color: #fff;
+  padding: 10px 14px;
+  border-radius: 14px;
   cursor: pointer;
 }
 
-/* Mobile Menu */
+/* ===============================
+   MOBILE MENU (FINAL)
+================================ */
 .mobile-menu {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
   display: none;
   flex-direction: column;
+  gap: 20px;
+
   padding: 20px;
-  background: rgba(6, 15, 28, 0.96);
+  background: rgba(6, 15, 28, 0.98);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Links */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
 }
 
 .menu-item {
-  padding: 14px;
-  font-size: 15px;
-  opacity: 0.85;
+  padding: 18px 14px;
+  font-size: 16px;
+  opacity: 0.8;
 }
 
-.menu-btn-primary {
-  margin-top: 16px;
-  padding: 14px;
+.menu-item:hover {
+  opacity: 1;
+}
+
+/* Big CTA */
+.mobile-cta {
+  margin-top: 10px;
+  padding: 18px;
+  width: 100%;
   text-align: center;
-  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 20px;
   background: linear-gradient(135deg, #00c6ff, #0072ff);
   color: #000;
-  font-weight: 600;
 }
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+  .menu-btn {
+    display: block;
+  }
+}
+
 
 /* ---------- BUTTONS ---------- */
 .btn {
