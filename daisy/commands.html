@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daisy — Commands</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+<!-- ===============================
+     HEADER (GLOBAL)
+================================ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="./assets/logo.png" alt="Daisy" />
+    </div>
+
+    <nav class="nav desktop-nav">
+      <a id="navHome">Home</a>
+      <a id="navCommands" class="active">Commands</a>
+      <a id="navDocs">Docs</a>
+    </nav>
+
+    <a id="inviteBtn" class="btn btn-primary desktop-invite">
+      Add to Discord
+    </a>
+
+    <button id="menuBtn" class="menu-btn">☰</button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a id="mNavHome">Home</a>
+    <a id="mNavCommands" class="active">Commands</a>
+    <a id="mNavDocs">Docs</a>
+
+    <a id="mInviteBtn" class="btn btn-primary">
+      Add to Discord
+    </a>
+  </div>
+</header>
+
+<!-- ===============================
+     PAGE HERO
+================================ -->
+<section class="page-hero">
+  <div class="page-hero-content fade">
+    <h1>Daisy Commands</h1>
+    <p>
+      Simple, fast, and powerful commands to control
+      your music experience.
+    </p>
+  </div>
+</section>
+
+<!-- ===============================
+     COMMANDS LIST
+================================ -->
+<section class="commands">
+  <div class="commands-grid">
+
+    <!-- Music -->
+    <div class="command-card fade">
+      <h3>/play</h3>
+      <p>Play a song or playlist from a supported source.</p>
+    </div>
+
+    <div class="command-card fade">
+      <h3>/pause</h3>
+      <p>Pause the currently playing track.</p>
+    </div>
+
+    <div class="command-card fade">
+      <h3>/resume</h3>
+      <p>Resume paused music.</p>
+    </div>
+
+    <div class="command-card fade">
+      <h3>/skip</h3>
+      <p>Skip the current track.</p>
+    </div>
+
+    <div class="command-card fade">
+      <h3>/stop</h3>
+      <p>Stop playback and clear the queue.</p>
+    </div>
+
+    <!-- Queue -->
+    <div class="command-card fade">
+      <h3>/queue</h3>
+      <p>View the current music queue.</p>
+    </div>
+
+    <div class="command-card fade">
+      <h3>/remove</h3>
+      <p>Remove a specific track from the queue.</p>
+    </div>
+
+    <div class="command-card fade">
+      <h3>/clear</h3>
+      <p>Clear all queued tracks.</p>
+    </div>
+
+    <!-- Settings -->
+    <div class="command-card fade">
+      <h3>/volume</h3>
+      <p>Adjust the playback volume.</p>
+    </div>
+
+    <div class="command-card fade">
+      <h3>/loop</h3>
+      <p>Loop the current track or entire queue.</p>
+    </div>
+
+    <div class="command-card fade">
+      <h3>/autoplay</h3>
+      <p>Automatically play similar tracks when the queue ends.</p>
+    </div>
+
+    <!-- Utility -->
+    <div class="command-card fade">
+      <h3>/ping</h3>
+      <p>Check Daisy’s response time.</p>
+    </div>
+
+    <div class="command-card fade">
+      <h3>/stats</h3>
+      <p>View bot statistics and uptime.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===============================
+     CTA
+================================ -->
+<section class="cta fade">
+  <h2>Start playing music in seconds</h2>
+  <p>Add Daisy to your server and enjoy high-quality audio.</p>
+
+  <a id="ctaInviteBtn" class="btn btn-primary large">
+    Add Daisy to Discord
+  </a>
+</section>
+
+<!-- ===============================
+     FOOTER
+================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="./assets/logo.png" alt="Daisy" />
+      <p>A Discord music bot — done right.</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>Product</h4>
+        <a id="fHome">Home</a>
+        <a id="fDocs">Docs</a>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <a id="fInvite">Invite Bot</a>
+        <a id="fSupport">Support Server</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom" id="footerText"></div>
+</footer>
+
+<!-- ===============================
+     SCRIPTS
+================================ -->
+<script src="./config.js"></script>
+<script src="./animations.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!window.DAISY_CONFIG) return;
+
+    const map = {
+      fHome: DAISY_CONFIG.links.home,
+      fDocs: DAISY_CONFIG.links.docs,
+      fInvite: DAISY_CONFIG.links.invite,
+      fSupport: DAISY_CONFIG.links.support,
+      ctaInviteBtn: DAISY_CONFIG.links.invite,
+    };
+
+    Object.keys(map).forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.href = map[id];
+    });
+  });
+</script>
+
+</body>
+</html>
