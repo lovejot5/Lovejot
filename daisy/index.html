@@ -1,43 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Daisy Music Bot</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Daisy – Discord Music Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: #0b0f0c;
-      color: white;
-      text-align: center;
-    }
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .btn {
-      margin-top: 20px;
-      padding: 14px 26px;
-      background: #22c55e;
-      color: black;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-  </style>
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- GSAP Animations -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
-  <div class="hero">
-    <h1>Daisy Music Bot</h1>
-    <p>High-quality music for your Discord server</p>
-    <a class="btn" href="#">Add to Discord</a>
-  </div>
+  <section class="hero">
+    <h1 class="fade">Ready to upgrade your server?</h1>
 
+    <p class="fade delay">
+      Daisy is a high-performance Discord music bot built for clean audio,
+      stability, and modern communities.
+    </p>
+
+    <div class="actions fade delay2">
+      <a href="#" class="btn primary">Add to Discord</a>
+      <a href="#" class="btn secondary">Support Server</a>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="animations.js"></script>
 </body>
 </html>
