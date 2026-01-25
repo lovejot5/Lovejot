@@ -16,17 +16,19 @@
 <!-- ================= HEADER ================= -->
 <header class="header">
   <div class="header-inner">
+
+    <!-- Logo -->
     <div class="logo">
-      <span class="logo-dot"></span>
-      Daisy
+      <img src="./assets/logo.png" alt="Daisy" class="logo-img" />
+      <span>Daisy</span>
     </div>
 
-    <!-- Desktop Nav -->
+    <!-- Desktop Navigation -->
     <nav class="nav-desktop">
-      <a href="#" id="navHome">Home</a>
-      <a href="#" id="navCommands">Commands</a>
-      <a href="#" id="navDocs">Docs</a>
-      <a href="#" class="btn primary small" id="inviteBtn">Add to Discord</a>
+      <a id="navHome">Home</a>
+      <a id="navCommands">Commands</a>
+      <a id="navDocs">Docs</a>
+      <a class="btn primary small" id="inviteBtn">Add to Discord</a>
     </nav>
 
     <!-- Mobile Button -->
@@ -35,10 +37,15 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#" class="menu-item" id="mNavHome">Home</a>
-    <a href="#" class="menu-item" id="mNavCommands">Commands</a>
-    <a href="#" class="menu-item" id="mNavDocs">Docs</a>
-    <a href="#" class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
+    <nav class="mobile-nav">
+      <a class="menu-item" id="mNavHome">Home</a>
+      <a class="menu-item" id="mNavCommands">Commands</a>
+      <a class="menu-item" id="mNavDocs">Docs</a>
+    </nav>
+
+    <a class="mobile-cta" id="mInviteBtn">
+      Add to Discord
+    </a>
   </div>
 </header>
 
