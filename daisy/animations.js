@@ -36,44 +36,44 @@ document.addEventListener("DOMContentLoaded", () => {
     if (footerSupport) footerSupport.href = cfg.links.support;
   }
 
-  /* ---------------------------------------
-     MOBILE MENU TOGGLE
-  ---------------------------------------- */
-  const menuBtn = document.getElementById("menuBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
+/* ===============================
+   MOBILE MENU TOGGLE
+================================ */
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
 
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.contains("open");
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener("click", () => {
+    const open = mobileMenu.classList.contains("open");
 
-      if (isOpen) {
-        gsap.to(mobileMenu, {
-          opacity: 0,
-          y: -10,
-          duration: 0.25,
-          ease: "power2.in",
-          onComplete: () => {
-            mobileMenu.style.display = "none";
-            mobileMenu.classList.remove("open");
-          },
-        });
-      } else {
-        mobileMenu.style.display = "flex";
-        mobileMenu.classList.add("open");
+    if (open) {
+      gsap.to(mobileMenu, {
+        opacity: 0,
+        y: -10,
+        duration: 0.25,
+        ease: "power2.in",
+        onComplete: () => {
+          mobileMenu.style.display = "none";
+          mobileMenu.classList.remove("open");
+        }
+      });
+    } else {
+      mobileMenu.style.display = "flex";
+      mobileMenu.classList.add("open");
 
-        gsap.fromTo(
-          mobileMenu,
-          { opacity: 0, y: -10 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.35,
-            ease: "power2.out",
-          }
-        );
-      }
-    });
-  }
+      gsap.fromTo(
+        mobileMenu,
+        { opacity: 0, y: -10 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.35,
+          ease: "power2.out"
+        }
+      );
+    }
+  });
+}
 
   /* ---------------------------------------
      HERO LOAD ANIMATION
