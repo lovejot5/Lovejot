@@ -1,7 +1,7 @@
 const DAISY_CONFIG = {
   bot: {
     name: "Daisy",
-    tagline: "A Discord music bot — done right."
+    tagline: "A Discord music bot"
   },
 
   links: {
