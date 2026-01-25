@@ -1,92 +1,149 @@
 /* =========================================
    Daisy – Animations & Interactions
-   Mobile + Desktop Safe
+   No dashboard
+   Mobile + Desktop safe
 ========================================= */
 
-gsap.registerPlugin(ScrollTrigger);
+document.addEventListener("DOMContentLoaded", () => {
+  /* ---------------------------------------
+     CONFIG BINDING
+  ---------------------------------------- */
+  if (window.DAISY_CONFIG) {
+    const cfg = window.DAISY_CONFIG;
 
-/* =========================================
-   Page Load – Header Entrance
-========================================= */
-gsap.from(".header", {
-  opacity: 0,
-  y: -20,
-  duration: 0.6,
-  ease: "power2.out",
-});
+    // Desktop nav
+    const navHome = document.getElementById("navHome");
+    const navCommands = document.getElementById("navCommands");
+    const navDocs = document.getElementById("navDocs");
+    const inviteBtn = document.getElementById("inviteBtn");
 
-/* =========================================
-   Scroll Fade-In Animations
-========================================= */
-gsap.utils.toArray(".fade").forEach((el) => {
-  gsap.to(el, {
-    opacity: 1,
-    y: 0,
-    duration: 0.9,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: el,
-      start: "top 85%",
-    },
-  });
-});
+    // Mobile nav
+    const mNavHome = document.getElementById("mNavHome");
+    const mNavCommands = document.getElementById("mNavCommands");
+    const mNavDocs = document.getElementById("mNavDocs");
+    const mInviteBtn = document.getElementById("mInviteBtn");
 
-/* =========================================
-   Mobile Menu Toggle (Header)
-========================================= */
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
+    if (navHome) navHome.href = cfg.links.home;
+    if (navCommands) navCommands.href = cfg.links.commands;
+    if (navDocs) navDocs.href = cfg.links.docs;
+    if (inviteBtn) inviteBtn.href = cfg.links.invite;
 
-if (menuBtn && mobileMenu) {
-  menuBtn.addEventListener("click", () => {
-    const isOpen = mobileMenu.style.display === "flex";
+    if (mNavHome) mNavHome.href = cfg.links.home;
+    if (mNavCommands) mNavCommands.href = cfg.links.commands;
+    if (mNavDocs) mNavDocs.href = cfg.links.docs;
+    if (mInviteBtn) mInviteBtn.href = cfg.links.invite;
+  }
 
-    mobileMenu.style.display = isOpen ? "none" : "flex";
+  /* ---------------------------------------
+     MOBILE MENU TOGGLE
+  ---------------------------------------- */
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-    if (!isOpen) {
-      gsap.fromTo(
-        mobileMenu,
-        { opacity: 0, y: -10 },
-        { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
-      );
-    }
-  });
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.contains("open");
 
-  // Close mobile menu after clicking a link
-  mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.style.display = "none";
+      if (isOpen) {
+        gsap.to(mobileMenu, {
+          opacity: 0,
+          y: -10,
+          duration: 0.25,
+          ease: "power2.in",
+          onComplete: () => {
+            mobileMenu.style.display = "none";
+            mobileMenu.classList.remove("open");
+          },
+        });
+      } else {
+        mobileMenu.style.display = "flex";
+        mobileMenu.classList.add("open");
+
+        gsap.fromTo(
+          mobileMenu,
+          { opacity: 0, y: -10 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.35,
+            ease: "power2.out",
+          }
+        );
+      }
+    });
+  }
+
+  /* ---------------------------------------
+     HERO FADE-IN (ON LOAD)
+  ---------------------------------------- */
+  const hero = document.querySelector(".hero");
+
+  if (hero) {
+    gsap.fromTo(
+      hero,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      }
+    );
+  }
+
+  /* ---------------------------------------
+     BUTTON HOVER MICRO-ANIMATION
+  ---------------------------------------- */
+  const buttons = document.querySelectorAll(
+    ".btn, .menu-btn-primary, .btn.primary.small"
+  );
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("mouseenter", () => {
+      gsap.to(btn, {
+        scale: 1.04,
+        duration: 0.15,
+        ease: "power2.out",
+      });
+    });
+
+    btn.addEventListener("mouseleave", () => {
+      gsap.to(btn, {
+        scale: 1,
+        duration: 0.15,
+        ease: "power2.in",
+      });
     });
   });
-}
 
-/* =========================================
-   Daisy Config → Link Binding
-========================================= */
-document.addEventListener("DOMContentLoaded", () => {
-  if (!window.DAISY_CONFIG) return;
+  /* ---------------------------------------
+     HEADER SCROLL EFFECT (SUBTLE)
+  ---------------------------------------- */
+  const header = document.querySelector(".header");
 
-  const linkMap = {
-    navHome: DAISY_CONFIG.links.home,
-    navCommands: DAISY_CONFIG.links.commands,
-    navDocs: DAISY_CONFIG.links.docs,
+  if (header) {
+    let lastScroll = 0;
 
-    mNavHome: DAISY_CONFIG.links.home,
-    mNavCommands: DAISY_CONFIG.links.commands,
-    mNavDocs: DAISY_CONFIG.links.docs,
+    window.addEventListener("scroll", () => {
+      const current = window.scrollY;
 
-    inviteBtn: DAISY_CONFIG.links.invite,
-    mInviteBtn: DAISY_CONFIG.links.invite,
-  };
+      if (current > 40 && current > lastScroll) {
+        gsap.to(header, {
+          y: -10,
+          opacity: 0.95,
+          duration: 0.25,
+          ease: "power2.out",
+        });
+      } else {
+        gsap.to(header, {
+          y: 0,
+          opacity: 1,
+          duration: 0.25,
+          ease: "power2.out",
+        });
+      }
 
-  Object.keys(linkMap).forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.href = linkMap[id];
-  });
-
-  // Footer text
-  const footerText = document.getElementById("footerText");
-  if (footerText && DAISY_CONFIG.footer?.text) {
-    footerText.textContent = DAISY_CONFIG.footer.text;
+      lastScroll = current;
+    });
   }
 });
