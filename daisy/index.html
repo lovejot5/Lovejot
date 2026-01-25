@@ -15,35 +15,33 @@ l<!DOCTYPE html>
 
 <body>
 
-<!-- ===============================
-     HEADER (STATIC / GLOBAL)
-================================ -->
+<!-- HEADER -->
 <header class="header">
   <div class="header-inner">
     <div class="logo">
-      <img src="./assets/logo.png" alt="Daisy" />
+      <span class="logo-dot"></span>
+      Daisy
     </div>
 
-    <nav class="nav desktop-nav">
+    <!-- Desktop Nav -->
+    <nav class="nav-desktop">
       <a id="navHome">Home</a>
       <a id="navCommands">Commands</a>
       <a id="navDocs">Docs</a>
+      <a class="btn primary small" id="inviteBtn">Add to Discord</a>
     </nav>
 
-    <a id="inviteBtn" class="btn btn-primary desktop-invite">
-      Add to Discord
-    </a>
-
-    <button id="menuBtn" class="menu-btn">☰</button>
+    <!-- Mobile Menu Button -->
+    <button class="menu-btn" id="menuBtn">☰</button>
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu">
-    <a id="mNavHome" class="active">Home</a>
-    <a id="mNavCommands">Commands</a>
-    <a id="mNavDocs">Docs</a>
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="menu-item" id="mNavHome">Home</a>
+    <a class="menu-item" id="mNavCommands">Commands</a>
+    <a class="menu-item" id="mNavDocs">Docs</a>
 
-    <a id="mInviteBtn" class="btn btn-primary">
+    <a class="menu-btn-primary" id="mInviteBtn">
       Add to Discord
     </a>
   </div>
