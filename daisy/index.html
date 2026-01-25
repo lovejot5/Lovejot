@@ -19,11 +19,11 @@
 
     <!-- Logo -->
     <div class="logo">
-      <img src="./assets/logo.png" alt="Daisy" class="logo-img" />
+      <img src="assets/logo.png" alt="Daisy" />
       <span>Daisy</span>
     </div>
 
-    <!-- Desktop Navigation -->
+    <!-- Desktop Nav -->
     <nav class="nav-desktop">
       <a id="navHome">Home</a>
       <a id="navCommands">Commands</a>
@@ -32,20 +32,19 @@
     </nav>
 
     <!-- Mobile Button -->
-    <button class="menu-btn" id="menuBtn">☰</button>
+    <button class="menu-btn" id="menuBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile Floating Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <nav class="mobile-nav">
-      <a class="menu-item" id="mNavHome">Home</a>
-      <a class="menu-item" id="mNavCommands">Commands</a>
-      <a class="menu-item" id="mNavDocs">Docs</a>
-    </nav>
-
-    <a class="mobile-cta" id="mInviteBtn">
-      Add to Discord
-    </a>
+    <a class="menu-item" id="mNavHome">Home</a>
+    <a class="menu-item" id="mNavCommands">Commands</a>
+    <a class="menu-item" id="mNavDocs">Docs</a>
+    <a class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
   </div>
 </header>
 
