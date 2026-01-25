@@ -1,53 +1,47 @@
 /* =========================================
    Daisy – Animations & Interactions (FINAL)
-   Floating Header • Mobile + Desktop
-   GSAP Powered
+   Mobile + Desktop
+   Floating Header Safe
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
   /* ---------------------------------------
-     PAGE LOAD BLUR → CLEAR ANIMATION
+     PAGE LOAD BLUR ANIMATION
   ---------------------------------------- */
-  gsap.set("body", {
-    filter: "blur(12px)",
-    opacity: 0
-  });
+  gsap.set("body", { opacity: 0, filter: "blur(14px)" });
 
   gsap.to("body", {
-    filter: "blur(0px)",
     opacity: 1,
-    duration: 0.8,
-    ease: "power3.out"
+    filter: "blur(0px)",
+    duration: 0.9,
+    ease: "power3.out",
   });
 
   /* ---------------------------------------
      CONFIG LINK BINDING
   ---------------------------------------- */
   if (window.DAISY_CONFIG) {
-    const c = DAISY_CONFIG.links;
+    const c = window.DAISY_CONFIG.links;
 
-    const linksMap = {
-      navHome: c.home,
-      navCommands: c.commands,
-      navDocs: c.docs,
-      inviteBtn: c.invite,
-
-      mNavHome: c.home,
-      mNavCommands: c.commands,
-      mNavDocs: c.docs,
-      mInviteBtn: c.invite,
-
-      heroInvite: c.invite,
-      heroSupport: c.support,
-      footerInvite: c.invite,
-      footerSupport: c.support,
+    const bind = (id, link) => {
+      const el = document.getElementById(id);
+      if (el) el.href = link;
     };
 
-    Object.keys(linksMap).forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.href = linksMap[id];
-    });
+    bind("navHome", c.home);
+    bind("navCommands", c.commands);
+    bind("navDocs", c.docs);
+    bind("inviteBtn", c.invite);
+
+    bind("mNavHome", c.home);
+    bind("mNavCommands", c.commands);
+    bind("mNavDocs", c.docs);
+    bind("mInviteBtn", c.invite);
+
+    bind("heroInvite", c.invite);
+    bind("heroSupport", c.support);
+    bind("footerInvite", c.invite);
+    bind("footerSupport", c.support);
   }
 
   /* ---------------------------------------
@@ -56,46 +50,68 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.getElementById("menuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
 
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.contains("open");
+  let menuOpen = false;
 
-      if (isOpen) {
-        // CLOSE MENU
-        gsap.to(mobileMenu, {
-          opacity: 0,
-          y: -12,
-          duration: 0.25,
-          ease: "power2.in",
-          onComplete: () => {
-            mobileMenu.classList.remove("open");
-            mobileMenu.style.display = "none";
+  const openMenu = () => {
+    menuOpen = true;
+    document.body.style.overflow = "hidden";
 
-            /* 🔓 UNLOCK BACKGROUND SCROLL */
-            document.body.style.overflow = "";
-          }
-        });
-      } else {
-        // OPEN MENU
-        mobileMenu.style.display = "flex";
-        mobileMenu.classList.add("open");
+    mobileMenu.style.display = "flex";
 
-        /* 🔒 LOCK BACKGROUND SCROLL */
-        document.body.style.overflow = "hidden";
-
-        gsap.fromTo(
-          mobileMenu,
-          { opacity: 0, y: -14 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.35,
-            ease: "power3.out"
-          }
-        );
+    gsap.fromTo(
+      mobileMenu,
+      { opacity: 0, y: -12, scale: 0.98 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.35,
+        ease: "power3.out",
       }
+    );
+  };
+
+  const closeMenu = () => {
+    menuOpen = false;
+    document.body.style.overflow = "";
+
+    gsap.to(mobileMenu, {
+      opacity: 0,
+      y: -12,
+      scale: 0.98,
+      duration: 0.25,
+      ease: "power2.in",
+      onComplete: () => {
+        mobileMenu.style.display = "none";
+      },
+    });
+  };
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menuOpen ? closeMenu() : openMenu();
     });
   }
+
+  /* ---------------------------------------
+     CLICK OUTSIDE TO CLOSE
+  ---------------------------------------- */
+  document.addEventListener("click", (e) => {
+    if (!menuOpen) return;
+    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  /* ---------------------------------------
+     ESC KEY TO CLOSE
+  ---------------------------------------- */
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menuOpen) {
+      closeMenu();
+    }
+  });
 
   /* ---------------------------------------
      HERO FADE-IN
@@ -105,25 +121,26 @@ document.addEventListener("DOMContentLoaded", () => {
   if (hero) {
     gsap.fromTo(
       hero,
-      { opacity: 0, y: 30 },
+      { opacity: 0, y: 24 },
       {
         opacity: 1,
         y: 0,
         duration: 0.9,
-        ease: "power3.out"
+        ease: "power3.out",
+        delay: 0.2,
       }
     );
   }
 
   /* ---------------------------------------
-     BUTTON MICRO INTERACTIONS
+     BUTTON MICRO INTERACTION
   ---------------------------------------- */
-  document.querySelectorAll(".btn, .menu-btn-primary").forEach(btn => {
+  document.querySelectorAll(".btn, .menu-btn-primary").forEach((btn) => {
     btn.addEventListener("mouseenter", () => {
       gsap.to(btn, {
         scale: 1.05,
         duration: 0.15,
-        ease: "power2.out"
+        ease: "power2.out",
       });
     });
 
@@ -131,13 +148,13 @@ document.addEventListener("DOMContentLoaded", () => {
       gsap.to(btn, {
         scale: 1,
         duration: 0.15,
-        ease: "power2.in"
+        ease: "power2.in",
       });
     });
   });
 
   /* ---------------------------------------
-     HEADER FLOAT SCROLL EFFECT
+     HEADER SCROLL SOFT EFFECT
   ---------------------------------------- */
   const header = document.querySelector(".header");
   let lastScroll = 0;
@@ -146,24 +163,23 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", () => {
       const current = window.scrollY;
 
-      if (current > lastScroll && current > 80) {
+      if (current > lastScroll && current > 60) {
         gsap.to(header, {
           y: -6,
           opacity: 0.95,
           duration: 0.25,
-          ease: "power2.out"
+          ease: "power2.out",
         });
       } else {
         gsap.to(header, {
           y: 0,
           opacity: 1,
           duration: 0.25,
-          ease: "power2.out"
+          ease: "power2.out",
         });
       }
 
       lastScroll = current;
     });
   }
-
 });
