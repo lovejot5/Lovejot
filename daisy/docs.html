@@ -5,183 +5,204 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daisy — Documentation</title>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="./styles.css" />
 
   <!-- GSAP -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 </head>
 
 <body>
 
-<!-- ===============================
-     HEADER (GLOBAL)
-================================ -->
+<!-- ================= HEADER ================= -->
 <header class="header">
   <div class="header-inner">
     <div class="logo">
-      <img src="./assets/logo.png" alt="Daisy" />
+      <span class="logo-dot"></span>
+      Daisy
     </div>
 
-    <nav class="nav desktop-nav">
-      <a id="navHome">Home</a>
-      <a id="navCommands">Commands</a>
-      <a id="navDocs" class="active">Docs</a>
+    <!-- Desktop Nav -->
+    <nav class="nav-desktop">
+      <a href="#" id="navHome">Home</a>
+      <a href="#" id="navCommands">Commands</a>
+      <a href="#" id="navDocs">Docs</a>
+      <a href="#" class="btn primary small" id="inviteBtn">Add to Discord</a>
     </nav>
 
-    <a id="inviteBtn" class="btn btn-primary desktop-invite">
-      Add to Discord
-    </a>
-
-    <button id="menuBtn" class="menu-btn">☰</button>
+    <!-- Mobile Button -->
+    <button class="menu-btn" id="menuBtn">☰</button>
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu">
-    <a id="mNavHome">Home</a>
-    <a id="mNavCommands">Commands</a>
-    <a id="mNavDocs" class="active">Docs</a>
-
-    <a id="mInviteBtn" class="btn btn-primary">
-      Add to Discord
-    </a>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#" class="menu-item" id="mNavHome">Home</a>
+    <a href="#" class="menu-item" id="mNavCommands">Commands</a>
+    <a href="#" class="menu-item" id="mNavDocs">Docs</a>
+    <a href="#" class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
   </div>
 </header>
 
-<!-- ===============================
-     PAGE HERO
-================================ -->
-<section class="page-hero">
-  <div class="page-hero-content fade">
-    <h1>Daisy Documentation</h1>
+<!-- ================= MAIN ================= -->
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>
+      Daisy <span style="color:#00c6ff">Documentation</span>
+    </h1>
+
     <p>
-      Everything you need to set up, use, and enjoy Daisy
-      in your Discord server.
+      Everything you need to know to get started with Daisy.
     </p>
   </div>
 </section>
 
-<!-- ===============================
-     DOC SECTIONS
-================================ -->
-<section class="docs">
+<!-- GETTING STARTED -->
+<section>
+  <h2 class="section-title">Getting Started</h2>
 
-  <div class="doc-section fade">
-    <h2>Getting Started</h2>
+  <div style="max-width:800px;margin:0 auto;color:#9fb3c8">
     <p>
-      Invite Daisy to your server, join a voice channel, and
-      use <code>/play</code> to start playing music instantly.
+      Daisy is designed to be simple and intuitive.  
+      You can start using Daisy in your server within seconds.
     </p>
-  </div>
 
-  <div class="doc-section fade">
-    <h2>Basic Usage</h2>
-    <p>
-      Daisy uses modern slash commands. Type <code>/</code>
-      in chat to view all available commands and options.
-    </p>
+    <ol style="margin-top:20px;padding-left:20px">
+      <li>Click <strong>Add to Discord</strong> and invite Daisy to your server.</li>
+      <li>Join a voice channel.</li>
+      <li>Use <code>/play</code> to start playing music.</li>
+    </ol>
   </div>
-
-  <div class="doc-section fade">
-    <h2>Supported Platforms</h2>
-    <p>
-      Daisy supports music from popular platforms and
-      automatically selects the best available source.
-    </p>
-  </div>
-
-  <div class="doc-section fade">
-    <h2>24/7 Mode</h2>
-    <p>
-      Enable 24/7 mode to keep Daisy connected to a voice
-      channel without disconnecting when idle.
-    </p>
-  </div>
-
-  <div class="doc-section fade">
-    <h2>Permissions</h2>
-    <p>
-      Make sure Daisy has permission to connect and speak
-      in voice channels. Server admins can restrict commands
-      using Discord roles.
-    </p>
-  </div>
-
-  <div class="doc-section fade">
-    <h2>Troubleshooting</h2>
-    <p>
-      If Daisy is not playing music, check voice permissions,
-      ensure you are in a voice channel, and try reusing
-      the <code>/play</code> command.
-    </p>
-  </div>
-
 </section>
 
-<!-- ===============================
-     CTA
-================================ -->
-<section class="cta fade">
-  <h2>Ready to start listening?</h2>
-  <p>Add Daisy to your server and enjoy music instantly.</p>
+<!-- BASIC USAGE -->
+<section>
+  <h2 class="section-title">Basic Usage</h2>
 
-  <a id="ctaInviteBtn" class="btn btn-primary large">
-    Add Daisy to Discord
-  </a>
+  <div class="features-grid">
+    <div class="feature-card">
+      <h3>Play Music</h3>
+      <p>
+        Use <code>/play</code> followed by a song name or URL to start playback.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Manage Playback</h3>
+      <p>
+        Control music using <code>/pause</code>, <code>/resume</code>,
+        and <code>/skip</code>.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Queue System</h3>
+      <p>
+        View upcoming tracks using <code>/queue</code>.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>24/7 Mode</h3>
+      <p>
+        Enable continuous playback so Daisy stays in the channel.
+      </p>
+    </div>
+  </div>
 </section>
 
-<!-- ===============================
-     FOOTER
-================================ -->
+<!-- TROUBLESHOOTING -->
+<section>
+  <h2 class="section-title">Troubleshooting</h2>
+
+  <div class="faq">
+    <details>
+      <summary>Daisy is not playing music</summary>
+      <p>
+        Make sure Daisy has permission to join and speak in your voice channel.
+      </p>
+    </details>
+
+    <details>
+      <summary>Commands are not responding</summary>
+      <p>
+        Ensure slash commands are enabled and Daisy is online.
+      </p>
+    </details>
+
+    <details>
+      <summary>Audio quality issues</summary>
+      <p>
+        Check your server region and internet connection stability.
+      </p>
+    </details>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section>
+  <h2 class="section-title">Need More Help?</h2>
+
+  <p style="max-width:700px;margin:0 auto;color:#9fb3c8;text-align:center">
+    If you still need help, feel free to join the support server.
+  </p>
+
+  <div style="margin-top:32px;text-align:center">
+    <a href="#" class="btn primary" id="docsSupport">Join Support Server</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="footer-inner">
+
     <div class="footer-brand">
-      <img src="./assets/logo.png" alt="Daisy" />
+      <div class="logo">
+        <span class="logo-dot"></span>
+        Daisy
+      </div>
       <p>A Discord music bot — done right.</p>
     </div>
 
-    <div class="footer-links">
+    <div class="footer-cols">
       <div>
-        <h4>Product</h4>
-        <a id="fHome">Home</a>
-        <a id="fCommands">Commands</a>
+        <h4>Navigation</h4>
+        <a href="#" id="fHome">Home</a>
+        <a href="#" id="fCommands">Commands</a>
+        <a href="#" id="fDocs">Docs</a>
       </div>
 
       <div>
-        <h4>Support</h4>
-        <a id="fInvite">Invite Bot</a>
-        <a id="fSupport">Support Server</a>
+        <h4>Other</h4>
+        <a href="#" id="fInvite">Invite Bot</a>
+        <a href="#" id="fSupport">Support Server</a>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
       </div>
     </div>
-  </div>
 
-  <div class="footer-bottom" id="footerText"></div>
+    <div class="footer-copy" id="footerCopy"></div>
+  </div>
 </footer>
 
-<!-- ===============================
-     SCRIPTS
-================================ -->
+<!-- ================= SCRIPTS ================= -->
 <script src="./config.js"></script>
 <script src="./animations.js"></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    if (!window.DAISY_CONFIG) return;
+  if (window.DAISY_CONFIG) {
+    const c = DAISY_CONFIG;
 
-    const map = {
-      fHome: DAISY_CONFIG.links.home,
-      fCommands: DAISY_CONFIG.links.commands,
-      fInvite: DAISY_CONFIG.links.invite,
-      fSupport: DAISY_CONFIG.links.support,
-      ctaInviteBtn: DAISY_CONFIG.links.invite,
-    };
-
-    Object.keys(map).forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) el.href = map[id];
-    });
-  });
+    document.getElementById("docsSupport").href = c.links.support;
+    document.getElementById("footerCopy").textContent = c.footer.copyright;
+  }
 </script>
 
 </body>
