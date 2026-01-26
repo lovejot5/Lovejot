@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daisy — Terms of Service</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- GSAP -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Daisy" />
+      Daisy
+    </div>
+
+    <nav class="nav-desktop">
+      <a id="navHome">Home</a>
+      <a id="navCommands">Commands</a>
+      <a id="navDocs">Docs</a>
+      <a class="btn primary small" id="navInvite">Add to Discord</a>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a class="menu-item" id="mNavHome">Home</a>
+      <a class="menu-item" id="mNavCommands">Commands</a>
+      <a class="menu-item" id="mNavDocs">Docs</a>
+      <a class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
+    </div>
+  </div>
+</header>
+
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<main>
+
+<section class="hero docs-hero">
+  <div class="hero-inner">
+    <h1>Terms of <span class="accent">Service</span></h1>
+    <p class="docs-subtitle">Rules and guidelines for using Daisy.</p>
+  </div>
+</section>
+
+<section class="section docs-start">
+  <div class="docs-card">
+
+    <h2 class="docs-title">Usage Agreement</h2>
+    <p class="docs-desc">
+      By inviting Daisy to your Discord server, you agree to follow these terms and Discord’s Terms of Service.
+    </p>
+
+    <div class="docs-steps">
+
+      <div class="docs-step">
+        <div class="step-index">1</div>
+        <div>
+          <h4>Responsible Use</h4>
+          <p>You agree not to misuse Daisy, attempt to exploit vulnerabilities, or disrupt service.</p>
+        </div>
+      </div>
+
+      <div class="docs-step">
+        <div class="step-index">2</div>
+        <div>
+          <h4>No Abuse</h4>
+          <p>Harassment, illegal activity, or malicious behavior through the bot is strictly prohibited.</p>
+        </div>
+      </div>
+
+      <div class="docs-step">
+        <div class="step-index">3</div>
+        <div>
+          <h4>Service Availability</h4>
+          <p>Daisy is provided “as is.” We do not guarantee 100% uptime or uninterrupted service.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="docs-title" style="margin-top:40px;">Termination</h2>
+    <p class="docs-desc">
+      We reserve the right to block servers or users that violate these terms or Discord’s policies.
+    </p>
+
+    <h2 class="docs-title" style="margin-top:40px;">Changes to Terms</h2>
+    <p class="docs-desc">
+      These terms may be updated over time. Continued use of Daisy after updates means you accept the changes.
+    </p>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <img src="assets/logo.png" alt="Daisy" />
+        Daisy
+      </div>
+      <p class="footer-tagline">A Discord music bot.</p>
+    </div>
+
+    <div class="footer-cols">
+      <div>
+        <h4>Navigation</h4>
+        <a id="fHome">Home</a>
+        <a id="fCommands">Commands</a>
+        <a id="fDocs">Docs</a>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <a id="fInvite">Invite Bot</a>
+        <a id="fSupport">Support Server</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span id="footerCopy"></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
