@@ -29,6 +29,30 @@ Object.entries({
   const el=document.getElementById("stat"+k);
   if(el)el.textContent=DAISY_CONFIG.stats[k.toLowerCase()];
 });
+const setActiveNav = () => {
+  const path = window.location.pathname;
+
+  const map = {
+    "index.html": "navHome",
+    "commands.html": "navCommands",
+    "docs.html": "navDocs"
+  };
+
+  Object.values(map).forEach(id => {
+    document.getElementById(id)?.classList.remove("active");
+    document.getElementById("m" + id)?.classList.remove("active");
+  });
+
+  Object.entries(map).forEach(([key, id]) => {
+    if (path.includes(key)) {
+      document.getElementById(id)?.classList.add("active");
+      document.getElementById("m" + id)?.classList.add("active");
+    }
+  });
+};
+
+setActiveNav();
+  
 document.getElementById("footerCopy").textContent=DAISY_CONFIG.footer.copyright;
 
 /* Page load delay */
@@ -55,9 +79,38 @@ document.querySelectorAll(".btn,.feature-card").forEach(el=>{
 });
 
 /* Mobile menu */
-const m=document.getElementById("mobileMenu"),bbtn=document.getElementById("menuBtn");
-let o=false;
-bbtn.onclick=e=>{e.stopPropagation();o=!o;m.style.display=o?"flex":"none"};
-document.onclick=()=>{o=false;m.style.display="none"};
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+let menuOpen = false;
+
+const openMenu = () => {
+  menuOpen = true;
+  menuBtn.classList.add("open");
+  mobileMenu.classList.add("open");
+  document.body.style.overflow = "hidden";
+};
+
+const closeMenu = () => {
+  menuOpen = false;
+  menuBtn.classList.remove("open");
+  mobileMenu.classList.remove("open");
+  document.body.style.overflow = "";
+};
+
+menuBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  menuOpen ? closeMenu() : openMenu();
+});
+
+document.addEventListener("click", (e) => {
+  if (menuOpen && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+    closeMenu();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && menuOpen) closeMenu();
+});
 
 });
