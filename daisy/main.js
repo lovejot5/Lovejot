@@ -100,6 +100,9 @@ const openMenu = () => {
   menuBtn.classList.add("open");
   mobileMenu.classList.add("open");
   document.body.style.overflow = "hidden";
+
+  /* accessibility state */
+  menuBtn.setAttribute("aria-expanded", "true");
 };
 
 const closeMenu = () => {
@@ -107,6 +110,9 @@ const closeMenu = () => {
   menuBtn.classList.remove("open");
   mobileMenu.classList.remove("open");
   document.body.style.overflow = "";
+
+  /* accessibility state */
+  menuBtn.setAttribute("aria-expanded", "false");
 };
 
 menuBtn.addEventListener("click", (e) => {
