@@ -375,8 +375,7 @@ main{padding-top:200px}
 }
 
 /* ===== COMMANDS ===== */
-
-/* ================= COMMANDS PAGE ================= */
+/* ================= COMMAND CONTROLS ================= */
 
 .command-controls {
   margin-top: 28px;
@@ -406,14 +405,21 @@ main{padding-top:200px}
   color: rgba(234,242,255,0.6);
 }
 
+/* ================= COMMAND LIST ================= */
+
 .commands-list {
   max-width: 900px;
   margin: 48px auto 0;
   display: grid;
   gap: 14px;
+
+  /* Mobile GPU stability */
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-/* Command card */
+/* ================= COMMAND CARD ================= */
+
 .command-row {
   display: flex;
   flex-direction: column;
@@ -422,12 +428,19 @@ main{padding-top:200px}
   padding: 16px 18px;
   border-radius: 16px;
 
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.04)
+  );
 
   border: 1px solid rgba(255,255,255,0.12);
+
   transition: transform .2s ease, background .2s ease;
+
+  /* Prevent Android scroll corruption */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .command-row:hover {
@@ -445,6 +458,16 @@ main{padding-top:200px}
   font-size: 13px;
   color: #c7d6e6;
   line-height: 1.4;
+}
+
+/* ================= MOBILE FIX ================= */
+
+@media (max-width: 768px) {
+
+  /* Disable hover lift on touch devices */
+  .command-row:hover {
+    transform: none;
+  }
 }
 
 
