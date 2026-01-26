@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daisy — Discord Music Bot</title>
 
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 
   <!-- GSAP -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 
 <body>
@@ -16,46 +18,39 @@
 <!-- ================= HEADER ================= -->
 <header class="header">
   <div class="header-inner">
-
-    <!-- Logo -->
     <div class="logo">
-  <img src="assets/logo.png" alt="Daisy" />
-  Daisy
-</div>
-    <!-- Desktop Nav -->
+      <img src="assets/logo.png" alt="Daisy" />
+      Daisy
+    </div>
+
     <nav class="nav-desktop">
       <a id="navHome">Home</a>
       <a id="navCommands">Commands</a>
       <a id="navDocs">Docs</a>
-      <a class="btn primary small" id="inviteBtn">Add to Discord</a>
+      <a class="btn primary small" id="navInvite">Add to Discord</a>
     </nav>
 
-    <!-- Mobile Button -->
     <button class="menu-btn" id="menuBtn">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </div>
 
-  <!-- Mobile Floating Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <a class="menu-item" id="mNavHome">Home</a>
     <a class="menu-item" id="mNavCommands">Commands</a>
     <a class="menu-item" id="mNavDocs">Docs</a>
-    <a class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
+    <a class="menu-btn-primary" id="mNavInvite">Add to Discord</a>
   </div>
 </header>
 
 <!-- ================= MAIN ================= -->
 <main>
 
-<!-- HERO -->
-<section class="hero">
+<section class="hero section">
   <div class="hero-inner">
     <h1>
       Ready to upgrade your<br />
-      <span style="color:#00c6ff">server?</span>
+      <span class="accent">server?</span>
     </h1>
 
     <p>
@@ -64,21 +59,20 @@
     </p>
 
     <div class="hero-actions">
-      <a href="#" class="btn primary" id="heroInvite">Add to Discord</a>
-      <a href="#" class="btn secondary" id="heroSupport">Support Server</a>
+      <a class="btn primary" id="heroInvite">Add to Discord</a>
+      <a class="btn secondary" id="heroSupport">Support Server</a>
     </div>
 
     <div class="hero-badges">
       <span># No Lag</span>
       <span># High Quality</span>
       <span># 24/7 Mode</span>
-      <span># Safe & Secure</span>
+      <span># Safe</span>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section id="features">
+<section class="section">
   <h2 class="section-title">Powerful Features</h2>
 
   <div class="features-grid">
@@ -86,17 +80,14 @@
       <h3>High Quality Audio</h3>
       <p>Crystal clear playback with stable streaming.</p>
     </div>
-
     <div class="feature-card">
       <h3>24/7 Mode</h3>
       <p>Music stays online even when everyone leaves.</p>
     </div>
-
     <div class="feature-card">
       <h3>Easy Commands</h3>
-      <p>Simple, clean, and beginner-friendly commands.</p>
+      <p>Simple, clean, beginner-friendly commands.</p>
     </div>
-
     <div class="feature-card">
       <h3>Global Stability</h3>
       <p>Low-latency playback optimized worldwide.</p>
@@ -104,8 +95,7 @@
   </div>
 </section>
 
-<!-- TRUST -->
-<section id="trust">
+<section class="section">
   <h2 class="section-title">Trusted by Communities</h2>
 
   <div class="stats-grid">
@@ -113,12 +103,10 @@
       <h3 id="statServers">—</h3>
       <p>Servers</p>
     </div>
-
     <div class="stat">
       <h3 id="statUsers">—</h3>
       <p>Users</p>
     </div>
-
     <div class="stat">
       <h3 id="statUptime">—</h3>
       <p>Uptime</p>
@@ -126,24 +114,21 @@
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq">
+<section class="section">
   <h2 class="section-title">Frequently Asked Questions</h2>
 
   <div class="faq">
     <details>
-      <summary>Is Daisy free to use?</summary>
-      <p>Yes. Daisy is free and works instantly after inviting.</p>
+      <summary>Is Daisy free?</summary>
+      <p>Yes. Daisy is completely free to use.</p>
     </details>
-
     <details>
-      <summary>Does Daisy support 24/7 playback?</summary>
-      <p>Yes, Daisy supports persistent 24/7 mode.</p>
+      <summary>Does Daisy support 24/7 mode?</summary>
+      <p>Yes, persistent 24/7 playback is supported.</p>
     </details>
-
     <details>
       <summary>Which platforms are supported?</summary>
-      <p>Daisy supports popular music sources used on Discord.</p>
+      <p>Daisy supports popular Discord music sources.</p>
     </details>
   </div>
 </section>
@@ -156,7 +141,7 @@
 
     <div class="footer-brand">
       <div class="logo">
-        <span class="logo-dot"></span>
+        <img src="assets/logo.png" alt="Daisy" />
         Daisy
       </div>
       <p>A Discord music bot — done right.</p>
@@ -165,44 +150,21 @@
     <div class="footer-cols">
       <div>
         <h4>Navigation</h4>
-        <a href="#" id="fHome">Home</a>
-        <a href="#" id="fCommands">Commands</a>
-        <a href="#" id="fDocs">Docs</a>
+        <a id="fHome">Home</a>
+        <a id="fCommands">Commands</a>
+        <a id="fDocs">Docs</a>
       </div>
 
       <div>
-        <h4>Other</h4>
-        <a href="#" id="fInvite">Invite Bot</a>
-        <a href="#" id="fSupport">Support Server</a>
-      </div>
-
-      <div>
-        <h4>Legal</h4>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
+        <h4>Links</h4>
+        <a id="fInvite">Invite Bot</a>
+        <a id="fSupport">Support Server</a>
       </div>
     </div>
 
     <div class="footer-copy" id="footerCopy"></div>
   </div>
 </footer>
-
-<!-- ================= SCRIPTS ================= -->
-<script src="./config.js"></script>
-<script src="./animations.js"></script>
-
-<script>
-  /* Bind stats + footer text */
-  if (window.DAISY_CONFIG) {
-    const c = DAISY_CONFIG;
-
-    document.getElementById("statServers").textContent = c.stats.servers;
-    document.getElementById("statUsers").textContent = c.stats.users;
-    document.getElementById("statUptime").textContent = c.stats.uptime;
-
-    document.getElementById("footerCopy").textContent = c.footer.copyright;
-  }
-</script>
 
 </body>
 </html>
