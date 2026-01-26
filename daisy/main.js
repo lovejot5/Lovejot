@@ -29,29 +29,26 @@ Object.entries({
   const el=document.getElementById("stat"+k);
   if(el)el.textContent=DAISY_CONFIG.stats[k.toLowerCase()];
 });
-const setActiveNav = () => {
-  const path = window.location.pathname;
+/* ---------------------------------------
+   ACTIVE PAGE HIGHLIGHT
+---------------------------------------- */
+const path = window.location.pathname;
 
-  const map = {
-    "index.html": "navHome",
-    "commands.html": "navCommands",
-    "docs.html": "navDocs"
-  };
-
-  Object.values(map).forEach(id => {
-    document.getElementById(id)?.classList.remove("active");
-    document.getElementById("m" + id)?.classList.remove("active");
-  });
-
-  Object.entries(map).forEach(([key, id]) => {
-    if (path.includes(key)) {
-      document.getElementById(id)?.classList.add("active");
-      document.getElementById("m" + id)?.classList.add("active");
-    }
-  });
+const setActive = (id) => {
+  const el = document.getElementById(id);
+  if (el) el.classList.add("active");
 };
 
-setActiveNav();
+if (path.includes("commands")) {
+  setActive("navCommands");
+  setActive("mNavCommands");
+} else if (path.includes("docs")) {
+  setActive("navDocs");
+  setActive("mNavDocs");
+} else {
+  setActive("navHome");
+  setActive("mNavHome");
+}
   
 document.getElementById("footerCopy").textContent=DAISY_CONFIG.footer.copyright;
 
