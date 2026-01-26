@@ -30,26 +30,22 @@
       <a class="btn primary small" id="navInvite">Add to Discord</a>
     </nav>
 
-    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
-  </div>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a class="menu-item" id="mNavHome">Home</a>
-    <a class="menu-item" id="mNavCommands">Commands</a>
-    <a class="menu-item" id="mNavDocs">Docs</a>
-
-    <a class="menu-btn-primary" id="mInviteBtn">
-      Add to Discord
-    </a>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a class="menu-item" id="mNavHome">Home</a>
+      <a class="menu-item" id="mNavCommands">Commands</a>
+      <a class="menu-item" id="mNavDocs">Docs</a>
+      <a class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
+    </div>
   </div>
 </header>
 
-<!-- Mobile blur backdrop -->
 <div class="menu-backdrop" id="menuBackdrop"></div>
 
 <!-- ================= MAIN ================= -->
@@ -63,79 +59,110 @@
     </h1>
 
     <p>
-      Everything you need to know to get started with Daisy.
+      Everything you need to get started and master Daisy.
     </p>
   </div>
 </section>
 
-<!-- GETTING STARTED -->
-<section class="section">
-  <h2 class="section-title">Getting Started</h2>
+<!-- ================= GETTING STARTED ================= -->
+<section class="section" style="padding-top:60px">
+  <h2 class="section-title">
+    Getting <span class="accent">Started</span>
+  </h2>
 
-  <div style="max-width:800px;margin:0 auto;color:#9fb3c8">
-    <p>
-      Daisy is designed to be simple and intuitive.  
-      You can start using Daisy in your server within seconds.
+  <div style="max-width:820px;margin:0 auto;text-align:center;color:#9fb3c8">
+    <p style="margin-bottom:28px">
+      Daisy is built to be fast, simple, and reliable.
+      You can start playing music in your Discord server in under a minute.
     </p>
 
-    <ol style="margin-top:20px;padding-left:20px">
-      <li>Click <strong>Add to Discord</strong> and invite Daisy.</li>
-      <li>Join a voice channel.</li>
-      <li>Use <code>/play</code> to start playing music.</li>
-    </ol>
+    <div class="features-grid" style="margin-bottom:36px">
+      <div class="feature-card">
+        <h3>Invite Daisy</h3>
+        <p>Add Daisy to your server using the official Discord invite.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Join Voice</h3>
+        <p>Connect to a voice channel where you want music playback.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Play Music</h3>
+        <p>Use <code>/play</code> with a song name or link to begin.</p>
+      </div>
+    </div>
+
+    <a class="btn primary" id="docsInvite">
+      Add Daisy to Discord
+    </a>
   </div>
 </section>
 
-<!-- BASIC USAGE -->
+<!-- ================= BASIC USAGE ================= -->
 <section class="section">
   <h2 class="section-title">Basic Usage</h2>
 
   <div class="features-grid">
     <div class="feature-card">
       <h3>Play Music</h3>
-      <p>Use <code>/play</code> followed by a song name or URL.</p>
+      <p>
+        Use <code>/play</code> followed by a song name or URL to start playback.
+      </p>
     </div>
 
     <div class="feature-card">
       <h3>Manage Playback</h3>
-      <p>Control music with <code>/pause</code>, <code>/resume</code>, and <code>/skip</code>.</p>
+      <p>
+        Control music using <code>/pause</code>, <code>/resume</code>, and <code>/skip</code>.
+      </p>
     </div>
 
     <div class="feature-card">
       <h3>Queue System</h3>
-      <p>View upcoming tracks using <code>/queue</code>.</p>
+      <p>
+        View upcoming tracks using <code>/queue</code>.
+      </p>
     </div>
 
     <div class="feature-card">
       <h3>24/7 Mode</h3>
-      <p>Enable continuous playback so Daisy stays connected.</p>
+      <p>
+        Enable continuous playback so Daisy stays in the channel.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- TROUBLESHOOTING -->
+<!-- ================= TROUBLESHOOTING ================= -->
 <section class="section">
   <h2 class="section-title">Troubleshooting</h2>
 
   <div class="faq">
     <details>
       <summary>Daisy is not playing music</summary>
-      <p>Ensure Daisy has permission to join and speak.</p>
+      <p>
+        Make sure Daisy has permission to join and speak in your voice channel.
+      </p>
     </details>
 
     <details>
       <summary>Commands are not responding</summary>
-      <p>Make sure slash commands are enabled and Daisy is online.</p>
+      <p>
+        Ensure slash commands are enabled and Daisy is online.
+      </p>
     </details>
 
     <details>
       <summary>Audio quality issues</summary>
-      <p>Check server region and internet stability.</p>
+      <p>
+        Check your server region and internet connection stability.
+      </p>
     </details>
   </div>
 </section>
 
-<!-- SUPPORT -->
+<!-- ================= SUPPORT ================= -->
 <section class="section">
   <h2 class="section-title">Need More Help?</h2>
 
@@ -144,7 +171,9 @@
   </p>
 
   <div style="margin-top:32px;text-align:center">
-    <a class="btn primary" id="docsSupport">Join Support Server</a>
+    <a class="btn primary" id="docsSupport">
+      Join Support Server
+    </a>
   </div>
 </section>
 
@@ -159,7 +188,9 @@
         <img src="assets/logo.png" alt="Daisy" />
         Daisy
       </div>
-      <p class="footer-tagline">A Discord music bot.</p>
+      <p class="footer-tagline">
+        A Discord music bot.
+      </p>
     </div>
 
     <div class="footer-cols">
@@ -186,6 +217,7 @@
     <div class="footer-bottom">
       <span id="footerCopy"></span>
     </div>
+
   </div>
 </footer>
 
