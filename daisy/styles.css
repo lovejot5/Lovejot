@@ -136,6 +136,29 @@ a{text-decoration:none;color:inherit}
   background: rgba(255,255,255,0.06);
 }
 
+/* ===== Mobile menu backdrop (glass blur) ===== */
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+
+  background: rgba(4, 12, 24, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+
+/* Only active on mobile */
+@media (max-width: 768px) {
+  .menu-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
 /* ===========================
    MOBILE PRIMARY CTA
 =========================== */
