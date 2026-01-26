@@ -6,11 +6,6 @@
   <title>Daisy — Commands</title>
 
   <link rel="stylesheet" href="./styles.css" />
-
-  <!-- GSAP -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
-  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
-  <script src="./main.js" defer></script>
 </head>
 
 <body>
@@ -24,21 +19,21 @@
     </div>
 
     <nav class="nav-desktop">
-      <a id="navHome">Home</a>
-      <a id="navCommands" class="active">Commands</a>
-      <a id="navDocs">Docs</a>
-      <a class="btn primary small" id="navInvite">Add to Discord</a>
+      <a href="index.html">Home</a>
+      <a href="commands.html" class="active">Commands</a>
+      <a href="docs.html">Docs</a>
+      <a class="btn primary small" id="inviteBtn">Add to Discord</a>
     </nav>
 
-    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+    <button class="menu-btn" id="menuBtn">
       <span></span><span></span><span></span>
     </button>
   </div>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a class="menu-item" id="mNavHome">Home</a>
-    <a class="menu-item active" id="mNavCommands">Commands</a>
-    <a class="menu-item" id="mNavDocs">Docs</a>
+    <a href="index.html" class="menu-item">Home</a>
+    <a href="commands.html" class="menu-item">Commands</a>
+    <a href="docs.html" class="menu-item">Docs</a>
     <a class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
   </div>
 </header>
@@ -48,129 +43,108 @@
 <!-- ================= MAIN ================= -->
 <main>
 
-<!-- HERO -->
-<section class="hero docs-hero">
+<section class="section hero">
   <div class="hero-inner">
     <h1>
       Daisy <span class="accent">Commands</span>
     </h1>
-    <p class="docs-subtitle">
-      Simple, powerful commands to control music, playlists, and filters.
+    <p>
+      Browse all available commands. Use search or filter by category.
     </p>
+
+    <!-- CONTROLS -->
+    <div class="command-controls">
+      <input
+        type="text"
+        id="commandSearch"
+        placeholder="Search commands (e.g. play, bassboost)…"
+      />
+
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="general">General</option>
+        <option value="music">Music</option>
+        <option value="playlists">Playlists</option>
+        <option value="spotify">Spotify</option>
+        <option value="filters">Filters</option>
+      </select>
+    </div>
   </div>
 </section>
 
-<!-- COMMANDS -->
-<section class="section docs-start">
+<section class="section">
 
-  <!-- GENERAL -->
-  <div class="docs-card">
-    <h2 class="docs-title">General Commands</h2>
-    <p class="docs-desc">Utility and bot information commands.</p>
+  <div class="commands-list" id="commandsList">
 
-    <div class="command-grid">
-      <span class="cmd">247</span>
-      <span class="cmd">help</span>
-      <span class="cmd">invite</span>
-      <span class="cmd">latency</span>
-      <span class="cmd">prefix</span>
-      <span class="cmd">stats</span>
-      <span class="cmd">support</span>
-      <span class="cmd">uptime</span>
-    </div>
+    <!-- ================= GENERAL ================= -->
+    <div class="command-row" data-name="247" data-category="general"><strong>/247</strong><span>Enable or disable 24/7 mode</span></div>
+    <div class="command-row" data-name="help" data-category="general"><strong>/help</strong><span>Show the help menu</span></div>
+    <div class="command-row" data-name="invite" data-category="general"><strong>/invite</strong><span>Get the bot invite link</span></div>
+    <div class="command-row" data-name="latency" data-category="general"><strong>/latency</strong><span>Check bot latency and API ping</span></div>
+    <div class="command-row" data-name="prefix" data-category="general"><strong>/prefix</strong><span>View or change bot prefix</span></div>
+    <div class="command-row" data-name="stats" data-category="general"><strong>/stats</strong><span>View bot statistics</span></div>
+    <div class="command-row" data-name="support" data-category="general"><strong>/support</strong><span>Get support server link</span></div>
+    <div class="command-row" data-name="uptime" data-category="general"><strong>/uptime</strong><span>Check bot uptime</span></div>
+
+    <!-- ================= MUSIC ================= -->
+    <div class="command-row" data-name="join" data-category="music"><strong>/join</strong><span>Join your voice channel</span></div>
+    <div class="command-row" data-name="leave" data-category="music"><strong>/leave</strong><span>Leave the voice channel</span></div>
+    <div class="command-row" data-name="autoplay" data-category="music"><strong>/autoplay</strong><span>Toggle autoplay mode</span></div>
+    <div class="command-row" data-name="history" data-category="music"><strong>/history</strong><span>Show previously played tracks</span></div>
+    <div class="command-row" data-name="nowplaying" data-category="music"><strong>/nowplaying</strong><span>Show current track</span></div>
+    <div class="command-row" data-name="recommendations" data-category="music"><strong>/recommendations</strong><span>Get song recommendations</span></div>
+    <div class="command-row" data-name="search" data-category="music"><strong>/search</strong><span>Search for a song</span></div>
+    <div class="command-row" data-name="forward" data-category="music"><strong>/forward</strong><span>Forward the current track</span></div>
+    <div class="command-row" data-name="pause" data-category="music"><strong>/pause</strong><span>Pause playback</span></div>
+    <div class="command-row" data-name="play" data-category="music"><strong>/play</strong><span>Play music from name or URL</span></div>
+    <div class="command-row" data-name="replay" data-category="music"><strong>/replay</strong><span>Replay current track</span></div>
+    <div class="command-row" data-name="resume" data-category="music"><strong>/resume</strong><span>Resume playback</span></div>
+    <div class="command-row" data-name="rewind" data-category="music"><strong>/rewind</strong><span>Rewind current track</span></div>
+    <div class="command-row" data-name="seek" data-category="music"><strong>/seek</strong><span>Seek to timestamp</span></div>
+    <div class="command-row" data-name="skip" data-category="music"><strong>/skip</strong><span>Skip current track</span></div>
+    <div class="command-row" data-name="skipto" data-category="music"><strong>/skipto</strong><span>Skip to queue position</span></div>
+    <div class="command-row" data-name="stop" data-category="music"><strong>/stop</strong><span>Stop playback</span></div>
+    <div class="command-row" data-name="volume" data-category="music"><strong>/volume</strong><span>Adjust volume</span></div>
+    <div class="command-row" data-name="bump" data-category="music"><strong>/bump</strong><span>Move song to top</span></div>
+    <div class="command-row" data-name="clear" data-category="music"><strong>/clear</strong><span>Clear the queue</span></div>
+    <div class="command-row" data-name="loop" data-category="music"><strong>/loop</strong><span>Toggle loop mode</span></div>
+    <div class="command-row" data-name="move" data-category="music"><strong>/move</strong><span>Move a song</span></div>
+    <div class="command-row" data-name="queue" data-category="music"><strong>/queue</strong><span>View the queue</span></div>
+    <div class="command-row" data-name="remove" data-category="music"><strong>/remove</strong><span>Remove a song</span></div>
+    <div class="command-row" data-name="shuffle" data-category="music"><strong>/shuffle</strong><span>Shuffle the queue</span></div>
+
+    <!-- ================= PLAYLISTS ================= -->
+    <div class="command-row" data-name="pl-addnowplaying" data-category="playlists"><strong>/pl-addnowplaying</strong><span>Add current song to playlist</span></div>
+    <div class="command-row" data-name="pl-addsong" data-category="playlists"><strong>/pl-addsong</strong><span>Add song to playlist</span></div>
+    <div class="command-row" data-name="pl-create" data-category="playlists"><strong>/pl-create</strong><span>Create a playlist</span></div>
+    <div class="command-row" data-name="pldelete" data-category="playlists"><strong>/pldelete</strong><span>Delete playlist</span></div>
+    <div class="command-row" data-name="pl-edit" data-category="playlists"><strong>/pl-edit</strong><span>Edit playlist</span></div>
+    <div class="command-row" data-name="plinfo" data-category="playlists"><strong>/plinfo</strong><span>Playlist info</span></div>
+    <div class="command-row" data-name="pl-play" data-category="playlists"><strong>/pl-play</strong><span>Play playlist</span></div>
+    <div class="command-row" data-name="pl-removesong" data-category="playlists"><strong>/pl-removesong</strong><span>Remove song</span></div>
+    <div class="command-row" data-name="pl-view" data-category="playlists"><strong>/pl-view</strong><span>View playlist</span></div>
+
+    <!-- ================= SPOTIFY ================= -->
+    <div class="command-row" data-name="spotify-connect" data-category="spotify"><strong>/spotify-connect</strong><span>Connect Spotify</span></div>
+    <div class="command-row" data-name="spotify-playlists" data-category="spotify"><strong>/spotify-playlists</strong><span>View Spotify playlists</span></div>
+    <div class="command-row" data-name="spotifyunlink" data-category="spotify"><strong>/spotifyunlink</strong><span>Unlink Spotify</span></div>
+
+    <!-- ================= FILTERS ================= -->
+    <div class="command-row" data-name="reset" data-category="filters"><strong>/reset</strong><span>Reset filters</span></div>
+    <div class="command-row" data-name="bassboost" data-category="filters"><strong>/bassboost</strong><span>Bass boost filter</span></div>
+    <div class="command-row" data-name="superbass" data-category="filters"><strong>/superbass</strong><span>Super bass filter</span></div>
+    <div class="command-row" data-name="boost" data-category="filters"><strong>/boost</strong><span>Boost filter</span></div>
+    <div class="command-row" data-name="soft" data-category="filters"><strong>/soft</strong><span>Soft filter</span></div>
+    <div class="command-row" data-name="warm" data-category="filters"><strong>/warm</strong><span>Warm filter</span></div>
+    <div class="command-row" data-name="classical" data-category="filters"><strong>/classical</strong><span>Classical filter</span></div>
+    <div class="command-row" data-name="hiphop" data-category="filters"><strong>/hiphop</strong><span>Hip-hop filter</span></div>
+    <div class="command-row" data-name="jazz" data-category="filters"><strong>/jazz</strong><span>Jazz filter</span></div>
+    <div class="command-row" data-name="pop" data-category="filters"><strong>/pop</strong><span>Pop filter</span></div>
+    <div class="command-row" data-name="rock" data-category="filters"><strong>/rock</strong><span>Rock filter</span></div>
+    <div class="command-row" data-name="bright" data-category="filters"><strong>/bright</strong><span>Bright filter</span></div>
+    <div class="command-row" data-name="treble" data-category="filters"><strong>/treble</strong><span>Treble filter</span></div>
+
   </div>
-
-  <!-- MUSIC -->
-  <div class="docs-card">
-    <h2 class="docs-title">Music Commands</h2>
-    <p class="docs-desc">Playback, queue, and listening controls.</p>
-
-    <div class="command-grid">
-      <span class="cmd">join</span>
-      <span class="cmd">leave</span>
-      <span class="cmd">play</span>
-      <span class="cmd">pause</span>
-      <span class="cmd">resume</span>
-      <span class="cmd">skip</span>
-      <span class="cmd">skipto</span>
-      <span class="cmd">stop</span>
-      <span class="cmd">queue</span>
-      <span class="cmd">loop</span>
-      <span class="cmd">volume</span>
-      <span class="cmd">autoplay</span>
-      <span class="cmd">history</span>
-      <span class="cmd">nowplaying</span>
-      <span class="cmd">recommendations</span>
-      <span class="cmd">search</span>
-      <span class="cmd">seek</span>
-      <span class="cmd">rewind</span>
-      <span class="cmd">forward</span>
-      <span class="cmd">shuffle</span>
-      <span class="cmd">move</span>
-      <span class="cmd">remove</span>
-      <span class="cmd">clear</span>
-      <span class="cmd">bump</span>
-      <span class="cmd">replay</span>
-    </div>
-  </div>
-
-  <!-- PLAYLISTS -->
-  <div class="docs-card">
-    <h2 class="docs-title">Playlist Commands</h2>
-    <p class="docs-desc">Manage personal playlists.</p>
-
-    <div class="command-grid">
-      <span class="cmd">pl-create</span>
-      <span class="cmd">pl-play</span>
-      <span class="cmd">pl-view</span>
-      <span class="cmd">pl-info</span>
-      <span class="cmd">pl-edit</span>
-      <span class="cmd">pl-delete</span>
-      <span class="cmd">pl-addsong</span>
-      <span class="cmd">pl-addnowplaying</span>
-      <span class="cmd">pl-removesong</span>
-    </div>
-  </div>
-
-  <!-- SPOTIFY -->
-  <div class="docs-card">
-    <h2 class="docs-title">Spotify Commands</h2>
-    <p class="docs-desc">Spotify integration commands.</p>
-
-    <div class="command-grid">
-      <span class="cmd">spotify-connect</span>
-      <span class="cmd">spotify-playlists</span>
-      <span class="cmd">spotify-unlink</span>
-    </div>
-  </div>
-
-  <!-- FILTERS -->
-  <div class="docs-card">
-    <h2 class="docs-title">Filter Commands</h2>
-    <p class="docs-desc">Audio effects and sound presets.</p>
-
-    <div class="command-grid">
-      <span class="cmd">reset</span>
-      <span class="cmd">bassboost</span>
-      <span class="cmd">superbass</span>
-      <span class="cmd">boost</span>
-      <span class="cmd">soft</span>
-      <span class="cmd">warm</span>
-      <span class="cmd">classical</span>
-      <span class="cmd">hiphop</span>
-      <span class="cmd">jazz</span>
-      <span class="cmd">pop</span>
-      <span class="cmd">rock</span>
-      <span class="cmd">bright</span>
-      <span class="cmd">treble</span>
-    </div>
-  </div>
-
-  <!-- SUPPORT CTA -->
-  <div class="docs-cta">
-    <a class="btn primary" id="cmdSupport">Join Support Server</a>
-  </div>
-
 </section>
 
 </main>
@@ -178,9 +152,34 @@
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-copy" id="footerCopy"></div>
+    <p id="footerCopy"></p>
   </div>
 </footer>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+  const searchInput = document.getElementById("commandSearch");
+  const categorySelect = document.getElementById("categoryFilter");
+  const commands = document.querySelectorAll(".command-row");
+
+  function filterCommands() {
+    const search = searchInput.value.toLowerCase();
+    const category = categorySelect.value;
+
+    commands.forEach(cmd => {
+      const name = cmd.dataset.name;
+      const cat = cmd.dataset.category;
+
+      const matchesSearch = name.includes(search);
+      const matchesCategory = category === "all" || cat === category;
+
+      cmd.style.display = (matchesSearch && matchesCategory) ? "flex" : "none";
+    });
+  }
+
+  searchInput.addEventListener("input", filterCommands);
+  categorySelect.addEventListener("change", filterCommands);
+</script>
 
 </body>
 </html>
