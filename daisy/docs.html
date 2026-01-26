@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daisy — Documentation</title>
 
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 
   <!-- GSAP -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 
 <body>
@@ -17,39 +19,47 @@
 <header class="header">
   <div class="header-inner">
     <div class="logo">
-      <span class="logo-dot"></span>
+      <img src="assets/logo.png" alt="Daisy" />
       Daisy
     </div>
 
-    <!-- Desktop Nav -->
     <nav class="nav-desktop">
-      <a href="#" id="navHome">Home</a>
-      <a href="#" id="navCommands">Commands</a>
-      <a href="#" id="navDocs">Docs</a>
-      <a href="#" class="btn primary small" id="inviteBtn">Add to Discord</a>
+      <a id="navHome">Home</a>
+      <a id="navCommands">Commands</a>
+      <a id="navDocs">Docs</a>
+      <a class="btn primary small" id="navInvite">Add to Discord</a>
     </nav>
 
-    <!-- Mobile Button -->
-    <button class="menu-btn" id="menuBtn">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#" class="menu-item" id="mNavHome">Home</a>
-    <a href="#" class="menu-item" id="mNavCommands">Commands</a>
-    <a href="#" class="menu-item" id="mNavDocs">Docs</a>
-    <a href="#" class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
+    <a class="menu-item" id="mNavHome">Home</a>
+    <a class="menu-item" id="mNavCommands">Commands</a>
+    <a class="menu-item" id="mNavDocs">Docs</a>
+
+    <a class="menu-btn-primary" id="mInviteBtn">
+      Add to Discord
+    </a>
   </div>
 </header>
+
+<!-- Mobile blur backdrop -->
+<div class="menu-backdrop" id="menuBackdrop"></div>
 
 <!-- ================= MAIN ================= -->
 <main>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero section">
   <div class="hero-inner">
     <h1>
-      Daisy <span style="color:#00c6ff">Documentation</span>
+      Daisy <span class="accent">Documentation</span>
     </h1>
 
     <p>
@@ -59,7 +69,7 @@
 </section>
 
 <!-- GETTING STARTED -->
-<section>
+<section class="section">
   <h2 class="section-title">Getting Started</h2>
 
   <div style="max-width:800px;margin:0 auto;color:#9fb3c8">
@@ -69,7 +79,7 @@
     </p>
 
     <ol style="margin-top:20px;padding-left:20px">
-      <li>Click <strong>Add to Discord</strong> and invite Daisy to your server.</li>
+      <li>Click <strong>Add to Discord</strong> and invite Daisy.</li>
       <li>Join a voice channel.</li>
       <li>Use <code>/play</code> to start playing music.</li>
     </ol>
@@ -77,71 +87,56 @@
 </section>
 
 <!-- BASIC USAGE -->
-<section>
+<section class="section">
   <h2 class="section-title">Basic Usage</h2>
 
   <div class="features-grid">
     <div class="feature-card">
       <h3>Play Music</h3>
-      <p>
-        Use <code>/play</code> followed by a song name or URL to start playback.
-      </p>
+      <p>Use <code>/play</code> followed by a song name or URL.</p>
     </div>
 
     <div class="feature-card">
       <h3>Manage Playback</h3>
-      <p>
-        Control music using <code>/pause</code>, <code>/resume</code>,
-        and <code>/skip</code>.
-      </p>
+      <p>Control music with <code>/pause</code>, <code>/resume</code>, and <code>/skip</code>.</p>
     </div>
 
     <div class="feature-card">
       <h3>Queue System</h3>
-      <p>
-        View upcoming tracks using <code>/queue</code>.
-      </p>
+      <p>View upcoming tracks using <code>/queue</code>.</p>
     </div>
 
     <div class="feature-card">
       <h3>24/7 Mode</h3>
-      <p>
-        Enable continuous playback so Daisy stays in the channel.
-      </p>
+      <p>Enable continuous playback so Daisy stays connected.</p>
     </div>
   </div>
 </section>
 
 <!-- TROUBLESHOOTING -->
-<section>
+<section class="section">
   <h2 class="section-title">Troubleshooting</h2>
 
   <div class="faq">
     <details>
       <summary>Daisy is not playing music</summary>
-      <p>
-        Make sure Daisy has permission to join and speak in your voice channel.
-      </p>
+      <p>Ensure Daisy has permission to join and speak.</p>
     </details>
 
     <details>
       <summary>Commands are not responding</summary>
-      <p>
-        Ensure slash commands are enabled and Daisy is online.
-      </p>
+      <p>Make sure slash commands are enabled and Daisy is online.</p>
     </details>
 
     <details>
       <summary>Audio quality issues</summary>
-      <p>
-        Check your server region and internet connection stability.
-      </p>
+      <p>Check server region and internet stability.</p>
     </details>
   </div>
 </section>
 
 <!-- SUPPORT -->
-<section>
+<section class="section">
   <h2 class="section-title">Need More Help?</h2>
 
   <p style="max-width:700px;margin:0 auto;color:#9fb3c8;text-align:center">
@@ -149,7 +144,7 @@
   </p>
 
   <div style="margin-top:32px;text-align:center">
-    <a href="#" class="btn primary" id="docsSupport">Join Support Server</a>
+    <a class="btn primary" id="docsSupport">Join Support Server</a>
   </div>
 </section>
 
@@ -161,49 +156,38 @@
 
     <div class="footer-brand">
       <div class="logo">
-        <span class="logo-dot"></span>
+        <img src="assets/logo.png" alt="Daisy" />
         Daisy
       </div>
-      <p>A Discord music bot — done right.</p>
+      <p class="footer-tagline">A Discord music bot.</p>
     </div>
 
     <div class="footer-cols">
       <div>
         <h4>Navigation</h4>
-        <a href="#" id="fHome">Home</a>
-        <a href="#" id="fCommands">Commands</a>
-        <a href="#" id="fDocs">Docs</a>
+        <a id="fHome">Home</a>
+        <a id="fCommands">Commands</a>
+        <a id="fDocs">Docs</a>
       </div>
 
       <div>
-        <h4>Other</h4>
-        <a href="#" id="fInvite">Invite Bot</a>
-        <a href="#" id="fSupport">Support Server</a>
+        <h4>Links</h4>
+        <a id="fInvite">Invite Bot</a>
+        <a id="fSupport">Support Server</a>
       </div>
 
       <div>
         <h4>Legal</h4>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
       </div>
     </div>
 
-    <div class="footer-copy" id="footerCopy"></div>
+    <div class="footer-bottom">
+      <span id="footerCopy"></span>
+    </div>
   </div>
 </footer>
-
-<!-- ================= SCRIPTS ================= -->
-<script src="./config.js"></script>
-<script src="./animations.js"></script>
-
-<script>
-  if (window.DAISY_CONFIG) {
-    const c = DAISY_CONFIG;
-
-    document.getElementById("docsSupport").href = c.links.support;
-    document.getElementById("footerCopy").textContent = c.footer.copyright;
-  }
-</script>
 
 </body>
 </html>
