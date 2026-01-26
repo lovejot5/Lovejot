@@ -290,6 +290,15 @@ main{padding-top:200px}
   padding:18px 22px;
   margin-bottom:16px;
 }
+/* ================= DOCS HERO FIX ================= */
+.docs-hero {
+  padding-bottom: 40px; /* reduce huge gap */
+}
+
+.docs-hero .hero-inner {
+  padding-top: 40px;
+}
+
 
 /* ---------- FOOTER ---------- */
 .footer {
