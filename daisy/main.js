@@ -83,12 +83,24 @@ gsap.utils.toArray(".section").forEach(sec=>{
 /* Feature cards stagger */
 gsap.from(".feature-card",{opacity:0,y:50,stagger:.15,duration:.9,scrollTrigger:{trigger:".features-grid"}});
 
-/* Hover exaggeration */
-document.querySelectorAll(".btn,.feature-card").forEach(el=>{
-  el.onmouseenter=()=>gsap.to(el,{scale:1.08,boxShadow:"0 25px 80px rgba(0,198,255,.35)",duration:.35});
-  el.onmouseleave=()=>gsap.to(el,{scale:1,boxShadow:"none",duration:.25});
-});
+/* Matte hover interaction (NO glow) */
+document.querySelectorAll(".btn, .feature-card").forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    gsap.to(el, {
+      scale: 1.04,
+      duration: 0.25,
+      ease: "power2.out"
+    });
+  });
 
+  el.addEventListener("mouseleave", () => {
+    gsap.to(el, {
+      scale: 1,
+      duration: 0.2,
+      ease: "power2.in"
+    });
+  });
+});
 /* Mobile menu */
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
