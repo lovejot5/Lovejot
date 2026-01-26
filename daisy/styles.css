@@ -134,12 +134,28 @@ a{text-decoration:none;color:inherit}
   font-weight:600;
   display:inline-block;
 }
-.btn.primary{
-  background:linear-gradient(135deg,#00c6ff,#0072ff);
-  color:#000;
+.btn.primary {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: #001018;
+  font-weight: 700;
+
+  box-shadow:
+    0 10px 30px rgba(0, 198, 255, 0.35),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
 }
-.btn.secondary{
-  background:rgba(255,255,255,.08);
+.btn.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #c9d6e2;
+
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+
+  box-shadow: none;
 }
 
 /* Sections */
