@@ -127,7 +127,7 @@ const closeMenu = () => {
   menuBtn.setAttribute("aria-expanded", "false");
   document.body.style.overflow = "";
 };
-
+menuBackdrop.addEventListener("click", closeMenu);
 menuBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   menuOpen ? closeMenu() : openMenu();
