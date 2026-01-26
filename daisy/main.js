@@ -104,6 +104,7 @@ document.querySelectorAll(".btn, .feature-card").forEach(el => {
 /* Mobile menu */
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
+const menuBackdrop = document.getElementById("menuBackdrop");
 
 let menuOpen = false;
 
@@ -111,20 +112,20 @@ const openMenu = () => {
   menuOpen = true;
   menuBtn.classList.add("open");
   mobileMenu.classList.add("open");
-  document.body.style.overflow = "hidden";
+  menuBackdrop.classList.add("open");
 
-  /* accessibility state */
   menuBtn.setAttribute("aria-expanded", "true");
+  document.body.style.overflow = "hidden";
 };
 
 const closeMenu = () => {
   menuOpen = false;
   menuBtn.classList.remove("open");
   mobileMenu.classList.remove("open");
-  document.body.style.overflow = "";
+  menuBackdrop.classList.remove("open");
 
-  /* accessibility state */
   menuBtn.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
 };
 
 menuBtn.addEventListener("click", (e) => {
