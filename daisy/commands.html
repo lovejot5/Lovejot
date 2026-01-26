@@ -71,19 +71,19 @@
       <input type="text" id="commandSearch" placeholder="Search commands (e.g. play, bass)" />
 
       <div class="category-dropdown" id="categoryDropdown">
-        <button class="category-btn" id="categoryBtn">
-          All Categories <span class="arrow">▾</span>
-        </button>
-        <div class="category-menu" id="categoryMenu">
-          <div class="cat-option" data-value="all">All Categories</div>
-          <div class="cat-option" data-value="general">General</div>
-          <div class="cat-option" data-value="music">Music</div>
-          <div class="cat-option" data-value="playlists">Playlists</div>
-          <div class="cat-option" data-value="spotify">Spotify</div>
-          <div class="cat-option" data-value="filters">Filters</div>
-        </div>
-      </div>
-    </div>
+  <button class="category-btn" id="categoryBtn">
+    All Categories <span class="arrow">▾</span>
+  </button>
+
+  <div class="category-menu" id="categoryMenu">
+    <div class="cat-option" data-value="all">All Categories</div>
+    <div class="cat-option" data-value="general">General</div>
+    <div class="cat-option" data-value="music">Music</div>
+    <div class="cat-option" data-value="playlists">Playlists</div>
+    <div class="cat-option" data-value="spotify">Spotify</div>
+    <div class="cat-option" data-value="filters">Filters</div>
+  </div>
+</div>
 
     <!-- COMMAND LIST -->
     <div class="commands-list" id="commandsList">
@@ -199,41 +199,44 @@
 
 <!-- FILTER SCRIPT -->
 <script>
-  const searchInput = document.getElementById("commandSearch");
-  const rows = document.querySelectorAll(".command-row");
+const searchInput = document.getElementById("commandSearch");
+const rows = document.querySelectorAll(".command-row");
 
-  const dropdown = document.getElementById("categoryDropdown");
-  const btn = document.getElementById("categoryBtn");
-  const options = document.querySelectorAll(".cat-option");
+const dropdown = document.getElementById("categoryDropdown");
+const btn = document.getElementById("categoryBtn");
+const options = document.querySelectorAll(".cat-option");
 
-  let currentCategory = "all";
+let currentCategory = "all";
 
-  function filterCommands() {
-    const q = searchInput.value.toLowerCase();
-    rows.forEach(row => {
-      const text = row.textContent.toLowerCase();
-      const matchText = text.includes(q);
-      const matchCat = currentCategory === "all" || row.dataset.category === currentCategory;
-      row.style.display = matchText && matchCat ? "flex" : "none";
-    });
-  }
+function filterCommands() {
+  const q = searchInput.value.toLowerCase();
 
-  btn.addEventListener("click", () => dropdown.classList.toggle("open"));
-
-  options.forEach(opt => {
-    opt.addEventListener("click", () => {
-      currentCategory = opt.dataset.value;
-      btn.childNodes[0].nodeValue = opt.textContent + " ";
-      dropdown.classList.remove("open");
-      filterCommands();
-    });
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    const matchText = text.includes(q);
+    const matchCat = currentCategory === "all" || row.dataset.category === currentCategory;
+    row.style.display = matchText && matchCat ? "flex" : "none";
   });
+}
 
-  document.addEventListener("click", e => {
-    if (!dropdown.contains(e.target)) dropdown.classList.remove("open");
+btn.addEventListener("click", () => {
+  dropdown.classList.toggle("open");
+});
+
+options.forEach(opt => {
+  opt.addEventListener("click", () => {
+    currentCategory = opt.dataset.value;
+    btn.innerHTML = opt.textContent + ' <span class="arrow">▾</span>';
+    dropdown.classList.remove("open");
+    filterCommands();
   });
+});
 
-  searchInput.addEventListener("input", filterCommands);
+document.addEventListener("click", e => {
+  if (!dropdown.contains(e.target)) dropdown.classList.remove("open");
+});
+
+searchInput.addEventListener("input", filterCommands);
 </script>
 
 </body>
