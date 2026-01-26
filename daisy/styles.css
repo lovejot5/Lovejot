@@ -229,4 +229,13 @@ main{padding-top:200px}
   .hero {
     padding-top: 180px;
   }
+
+  /* CTA priority (mobile) */
+  .hero-actions .btn.primary {
+    min-width: 220px;
+  }
+
+  .hero-actions .btn.secondary {
+    opacity: 0.85;
+  }
 }
