@@ -124,4 +124,12 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && menuOpen) closeMenu();
 });
 
+document
+  .querySelectorAll(".mobile-menu a")
+  .forEach(link=>{
+    link.addEventListener("click",()=>{
+      if(menuOpen) closeMenu();
+    });
+  });
+  
 });
