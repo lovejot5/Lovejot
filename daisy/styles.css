@@ -158,6 +158,17 @@ a{text-decoration:none;color:inherit}
   box-shadow: none;
 }
 
+.btn.primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 14px 38px rgba(0, 198, 255, 0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.35);
+}
+
+.btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
 /* Sections */
 main{padding-top:200px}
 .section{padding:120px 20px}
