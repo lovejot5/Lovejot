@@ -214,8 +214,19 @@ main{padding-top:200px}
 .footer-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:40px;margin-top:40px}
 .footer-copy{margin-top:40px;font-size:13px;opacity:.5}
 
-/* Responsive */
-@media(max-width:768px){
-  .nav-desktop{display:none}
-  .menu-btn{display:flex}
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero {
+    padding-top: 180px;
+  }
 }
