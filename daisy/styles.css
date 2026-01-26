@@ -376,30 +376,75 @@ main{padding-top:200px}
 
 /* ===== COMMANDS ===== */
 
-.command-grid {
-  margin-top: 18px;
+/* ================= COMMANDS PAGE ================= */
+
+.command-controls {
+  margin-top: 28px;
   display: flex;
+  gap: 12px;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
-.cmd {
-  padding: 8px 14px;
-  border-radius: 999px;
+.command-controls input,
+.command-controls select {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #eaf2ff;
+
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  min-width: 160px;
+}
+
+.command-controls input::placeholder {
+  color: rgba(234,242,255,0.6);
+}
+
+.commands-list {
+  max-width: 900px;
+  margin: 48px auto 0;
+  display: grid;
+  gap: 14px;
+}
+
+/* Command card */
+.command-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  padding: 16px 18px;
+  border-radius: 16px;
 
   background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
   border: 1px solid rgba(255,255,255,0.12);
-
-  font-size: 13px;
-  font-weight: 500;
-  color: #cfe7f4;
-
   transition: transform .2s ease, background .2s ease;
 }
 
-.cmd:hover {
+.command-row:hover {
+  background: rgba(255,255,255,0.09);
   transform: translateY(-2px);
-  background: rgba(0,198,255,0.15);
+}
+
+.command-row strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: #00c6ff;
+}
+
+.command-row span {
+  font-size: 13px;
+  color: #c7d6e6;
+  line-height: 1.4;
 }
 
 /* ================= CTA ================= */
@@ -507,6 +552,26 @@ main{padding-top:200px}
 
   .docs-title {
     font-size: 26px;
+  }
+  .command-controls {
+    padding: 0 16px;
+  }
+
+  .commands-list {
+    padding: 0 16px;
+    margin-top: 32px;
+  }
+
+  .command-row {
+    padding: 14px 16px;
+  }
+
+  .command-row strong {
+    font-size: 14px;
+  }
+
+  .command-row span {
+    font-size: 12.5px;
   }
 
   /* CTA priority (mobile) */
