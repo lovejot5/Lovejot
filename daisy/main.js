@@ -79,7 +79,16 @@ gsap.utils.toArray(".section").forEach(sec=>{
     scrollTrigger:{trigger:sec,start:"top 80%"}
   });
 });
-
+gsap.from(".footer", {
+  opacity: 0,
+  y: 40,
+  filter: "blur(6px)",
+  duration: 1,
+  scrollTrigger: {
+    trigger: ".footer",
+    start: "top 85%",
+  }
+});
 /* Feature cards stagger */
 gsap.from(".feature-card",{opacity:0,y:50,stagger:.15,duration:.9,scrollTrigger:{trigger:".features-grid"}});
 
