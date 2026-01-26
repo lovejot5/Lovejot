@@ -470,7 +470,71 @@ main{padding-top:200px}
   }
 }
 
+/* ================= CATEGORY DROPDOWN ================= */
 
+.category-dropdown {
+  position: relative;
+  min-width: 180px;
+}
+
+.category-btn {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+
+  background: rgba(255,255,255,0.08);
+  color: #eaf2ff;
+  border: 1px solid rgba(255,255,255,0.15);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.category-btn .arrow {
+  float: right;
+  opacity: 0.7;
+}
+
+.category-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  border-radius: 14px;
+  padding: 6px;
+  display: none;
+  z-index: 20;
+
+  background: rgba(8, 18, 32, 0.95);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+}
+
+.category-dropdown.open .category-menu {
+  display: block;
+  animation: fadeIn .2s ease;
+}
+
+.cat-option {
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #cfe6ff;
+}
+
+.cat-option:hover {
+  background: rgba(0,198,255,0.15);
+  color: #fff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 /* ================= CTA ================= */
 
 .docs-cta {
