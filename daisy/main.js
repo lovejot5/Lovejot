@@ -71,14 +71,20 @@ gsap.from("main",{opacity:0,y:40,filter:"blur(12px)",duration:1.2});
 
 /* Scroll reveal */
 gsap.utils.toArray(".section").forEach(sec=>{
+  const isCommands = sec.querySelector(".commands-list");
+
   gsap.from(sec,{
     opacity:0,
-    y:80,
-    filter:"blur(10px)",
-    duration:1.2,
-    scrollTrigger:{trigger:sec,start:"top 80%"}
+    y: isCommands ? 40 : 80,
+    duration:1.1,
+    ease:"power2.out",
+    scrollTrigger:{
+      trigger: sec,
+      start: "top 80%"
+    }
   });
 });
+  
 gsap.from(".footer", {
   opacity: 0,
   y: 40,
