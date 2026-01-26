@@ -12,6 +12,7 @@
 
 <!-- ================= HEADER ================= -->
 <header class="header">
+<header class="header">
   <div class="header-inner">
     <div class="logo">
       <img src="assets/logo.png" alt="Daisy" />
@@ -19,45 +20,64 @@
     </div>
 
     <nav class="nav-desktop">
-      <a href="index.html">Home</a>
-      <a href="commands.html" class="active">Commands</a>
-      <a href="docs.html">Docs</a>
-      <a class="btn primary small" id="inviteBtn">Add to Discord</a>
+      <a id="navHome">Home</a>
+      <a id="navCommands">Commands</a>
+      <a id="navDocs">Docs</a>
+      <a class="btn primary small" id="navInvite">Add to Discord</a>
     </nav>
 
-    <button class="menu-btn" id="menuBtn">
-      <span></span><span></span><span></span>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
-  </div>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html" class="menu-item">Home</a>
-    <a href="commands.html" class="menu-item">Commands</a>
-    <a href="docs.html" class="menu-item">Docs</a>
-    <a class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a class="menu-item" id="mNavHome">Home</a>
+      <a class="menu-item" id="mNavCommands">Commands</a>
+      <a class="menu-item" id="mNavDocs">Docs</a>
+      <a class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
+    </div>
   </div>
 </header>
 
 <div class="menu-backdrop" id="menuBackdrop"></div>
 
+
 <!-- ================= MAIN ================= -->
 <main>
 
-<section class="section hero">
+<section class="hero docs-hero">
   <div class="hero-inner">
     <h1>
       Daisy <span class="accent">Commands</span>
     </h1>
-    <p>
+
+    <p class="docs-subtitle">
       Browse all available commands. Use search or filter by category.
     </p>
+  </div>
+</section>
 
     <!-- CONTROLS -->
+    <section class="section docs-start">
+
+  <div class="docs-card">
+
+    <h2 class="docs-title">
+      Command <span class="accent">Reference</span>
+    </h2>
+
+    <p class="docs-desc">
+      Find commands quickly using search or category filters.
+    </p>
+
     <div class="command-controls">
       <input
         type="text"
         id="commandSearch"
-        placeholder="Search commands (e.g. play, bassboost)…"
+        placeholder="Search commands (e.g. play, bass)"
       />
 
       <select id="categoryFilter">
@@ -69,12 +89,11 @@
         <option value="filters">Filters</option>
       </select>
     </div>
+
   </div>
+
 </section>
-
-<section class="section">
-
-  <div class="commands-list" id="commandsList">
+  
 
     <!-- ================= GENERAL ================= -->
     <div class="command-row" data-name="247" data-category="general"><strong>/247</strong><span>Enable or disable 24/7 mode</span></div>
