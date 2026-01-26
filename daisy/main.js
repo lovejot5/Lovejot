@@ -18,10 +18,24 @@ document.addEventListener("DOMContentLoaded",()=>{
 /* Bind links */
 const b=(i,u)=>{const e=document.getElementById(i);if(e)e.href=u};
 Object.entries({
-  navHome:"home",navCommands:"commands",navDocs:"docs",navInvite:"invite",
-  mNavHome:"home",mNavCommands:"commands",mNavDocs:"docs",mNavInvite:"invite",
-  heroInvite:"invite",heroSupport:"support",
-  fHome:"home",fCommands:"commands",fDocs:"docs",fInvite:"invite",fSupport:"support"
+  navHome:"home",
+  navCommands:"commands",
+  navDocs:"docs",
+  navInvite:"invite",
+
+  mNavHome:"home",
+  mNavCommands:"commands",
+  mNavDocs:"docs",
+  mInviteBtn:"invite",
+
+  heroInvite:"invite",
+  heroSupport:"support",
+
+  fHome:"home",
+  fCommands:"commands",
+  fDocs:"docs",
+  fInvite:"invite",
+  fSupport:"support"
 }).forEach(([id,key])=>b(id,DAISY_CONFIG.links[key]));
 
 /* Stats */
