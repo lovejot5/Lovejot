@@ -607,3 +607,24 @@ main{padding-top:200px}
     opacity: 0.85;
   }
 }
+/* ================= MOBILE COMMANDS VISIBILITY FIX ================= */
+
+@media (max-width: 768px) {
+
+  main {
+    padding-top: 140px; /* header space */
+  }
+
+  .docs-hero {
+    padding-top: 60px;
+  }
+
+  .section.docs-start {
+    padding-top: 40px;
+  }
+
+  .commands-list {
+    margin-top: 28px;
+  }
+
+}
