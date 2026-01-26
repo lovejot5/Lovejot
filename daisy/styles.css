@@ -104,6 +104,16 @@ a{text-decoration:none;color:inherit}
     transform .35s ease;
 }
 
+.mobile-menu .menu-item {
+  padding: 14px 16px;
+  border-radius: 14px;
+  transition: background .25s ease;
+}
+
+.mobile-menu .menu-item:hover {
+  background: rgba(255,255,255,0.06);
+}
+
 /* OPEN STATE */
 .mobile-menu.open {
   opacity: 1;
