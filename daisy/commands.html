@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="./styles.css" />
 
   <!-- GSAP -->
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+  <script src="./main.js" defer></script>
 </head>
 
 <body>
@@ -17,108 +19,158 @@
 <header class="header">
   <div class="header-inner">
     <div class="logo">
-      <span class="logo-dot"></span>
+      <img src="assets/logo.png" alt="Daisy" />
       Daisy
     </div>
 
-    <!-- Desktop Nav -->
     <nav class="nav-desktop">
-      <a href="#" id="navHome">Home</a>
-      <a href="#" id="navCommands">Commands</a>
-      <a href="#" id="navDocs">Docs</a>
-      <a href="#" class="btn primary small" id="inviteBtn">Add to Discord</a>
+      <a id="navHome">Home</a>
+      <a id="navCommands" class="active">Commands</a>
+      <a id="navDocs">Docs</a>
+      <a class="btn primary small" id="navInvite">Add to Discord</a>
     </nav>
 
-    <!-- Mobile Button -->
-    <button class="menu-btn" id="menuBtn">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#" class="menu-item" id="mNavHome">Home</a>
-    <a href="#" class="menu-item" id="mNavCommands">Commands</a>
-    <a href="#" class="menu-item" id="mNavDocs">Docs</a>
-    <a href="#" class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
+    <a class="menu-item" id="mNavHome">Home</a>
+    <a class="menu-item active" id="mNavCommands">Commands</a>
+    <a class="menu-item" id="mNavDocs">Docs</a>
+    <a class="menu-btn-primary" id="mInviteBtn">Add to Discord</a>
   </div>
 </header>
+
+<div class="menu-backdrop" id="menuBackdrop"></div>
 
 <!-- ================= MAIN ================= -->
 <main>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero docs-hero">
   <div class="hero-inner">
     <h1>
-      Daisy <span style="color:#00c6ff">Commands</span>
+      Daisy <span class="accent">Commands</span>
     </h1>
-
-    <p>
-      Simple, clean, and powerful commands to control your music experience.
+    <p class="docs-subtitle">
+      Simple, powerful commands to control music, playlists, and filters.
     </p>
   </div>
 </section>
 
-<!-- COMMAND LIST -->
-<section>
-  <h2 class="section-title">Music Commands</h2>
+<!-- COMMANDS -->
+<section class="section docs-start">
 
-  <div class="features-grid">
+  <!-- GENERAL -->
+  <div class="docs-card">
+    <h2 class="docs-title">General Commands</h2>
+    <p class="docs-desc">Utility and bot information commands.</p>
 
-    <div class="feature-card">
-      <h3>/play</h3>
-      <p>Play music from a supported source or search query.</p>
+    <div class="command-grid">
+      <span class="cmd">247</span>
+      <span class="cmd">help</span>
+      <span class="cmd">invite</span>
+      <span class="cmd">latency</span>
+      <span class="cmd">prefix</span>
+      <span class="cmd">stats</span>
+      <span class="cmd">support</span>
+      <span class="cmd">uptime</span>
     </div>
-
-    <div class="feature-card">
-      <h3>/pause</h3>
-      <p>Pause the currently playing track.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>/resume</h3>
-      <p>Resume paused playback.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>/skip</h3>
-      <p>Skip the current track.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>/stop</h3>
-      <p>Stop playback and clear the queue.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>/queue</h3>
-      <p>View the current music queue.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>/loop</h3>
-      <p>Toggle loop mode for track or queue.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>/volume</h3>
-      <p>Adjust the playback volume.</p>
-    </div>
-
   </div>
-</section>
 
-<!-- INFO -->
-<section>
-  <h2 class="section-title">Need Help?</h2>
+  <!-- MUSIC -->
+  <div class="docs-card">
+    <h2 class="docs-title">Music Commands</h2>
+    <p class="docs-desc">Playback, queue, and listening controls.</p>
 
-  <p style="max-width:700px;margin:0 auto;color:#9fb3c8;text-align:center">
-    Join the support server if you have questions, need help,
-    or want to suggest new features.
-  </p>
-
-  <div style="margin-top:32px;text-align:center">
-    <a href="#" class="btn primary" id="cmdSupport">Join Support Server</a>
+    <div class="command-grid">
+      <span class="cmd">join</span>
+      <span class="cmd">leave</span>
+      <span class="cmd">play</span>
+      <span class="cmd">pause</span>
+      <span class="cmd">resume</span>
+      <span class="cmd">skip</span>
+      <span class="cmd">skipto</span>
+      <span class="cmd">stop</span>
+      <span class="cmd">queue</span>
+      <span class="cmd">loop</span>
+      <span class="cmd">volume</span>
+      <span class="cmd">autoplay</span>
+      <span class="cmd">history</span>
+      <span class="cmd">nowplaying</span>
+      <span class="cmd">recommendations</span>
+      <span class="cmd">search</span>
+      <span class="cmd">seek</span>
+      <span class="cmd">rewind</span>
+      <span class="cmd">forward</span>
+      <span class="cmd">shuffle</span>
+      <span class="cmd">move</span>
+      <span class="cmd">remove</span>
+      <span class="cmd">clear</span>
+      <span class="cmd">bump</span>
+      <span class="cmd">replay</span>
+    </div>
   </div>
+
+  <!-- PLAYLISTS -->
+  <div class="docs-card">
+    <h2 class="docs-title">Playlist Commands</h2>
+    <p class="docs-desc">Manage personal playlists.</p>
+
+    <div class="command-grid">
+      <span class="cmd">pl-create</span>
+      <span class="cmd">pl-play</span>
+      <span class="cmd">pl-view</span>
+      <span class="cmd">pl-info</span>
+      <span class="cmd">pl-edit</span>
+      <span class="cmd">pl-delete</span>
+      <span class="cmd">pl-addsong</span>
+      <span class="cmd">pl-addnowplaying</span>
+      <span class="cmd">pl-removesong</span>
+    </div>
+  </div>
+
+  <!-- SPOTIFY -->
+  <div class="docs-card">
+    <h2 class="docs-title">Spotify Commands</h2>
+    <p class="docs-desc">Spotify integration commands.</p>
+
+    <div class="command-grid">
+      <span class="cmd">spotify-connect</span>
+      <span class="cmd">spotify-playlists</span>
+      <span class="cmd">spotify-unlink</span>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="docs-card">
+    <h2 class="docs-title">Filter Commands</h2>
+    <p class="docs-desc">Audio effects and sound presets.</p>
+
+    <div class="command-grid">
+      <span class="cmd">reset</span>
+      <span class="cmd">bassboost</span>
+      <span class="cmd">superbass</span>
+      <span class="cmd">boost</span>
+      <span class="cmd">soft</span>
+      <span class="cmd">warm</span>
+      <span class="cmd">classical</span>
+      <span class="cmd">hiphop</span>
+      <span class="cmd">jazz</span>
+      <span class="cmd">pop</span>
+      <span class="cmd">rock</span>
+      <span class="cmd">bright</span>
+      <span class="cmd">treble</span>
+    </div>
+  </div>
+
+  <!-- SUPPORT CTA -->
+  <div class="docs-cta">
+    <a class="btn primary" id="cmdSupport">Join Support Server</a>
+  </div>
+
 </section>
 
 </main>
@@ -126,52 +178,9 @@
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="footer-inner">
-
-    <div class="footer-brand">
-      <div class="logo">
-        <span class="logo-dot"></span>
-        Daisy
-      </div>
-      <p>A Discord music bot — done right.</p>
-    </div>
-
-    <div class="footer-cols">
-      <div>
-        <h4>Navigation</h4>
-        <a href="#" id="fHome">Home</a>
-        <a href="#" id="fCommands">Commands</a>
-        <a href="#" id="fDocs">Docs</a>
-      </div>
-
-      <div>
-        <h4>Other</h4>
-        <a href="#" id="fInvite">Invite Bot</a>
-        <a href="#" id="fSupport">Support Server</a>
-      </div>
-
-      <div>
-        <h4>Legal</h4>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-      </div>
-    </div>
-
     <div class="footer-copy" id="footerCopy"></div>
   </div>
 </footer>
-
-<!-- ================= SCRIPTS ================= -->
-<script src="./config.js"></script>
-<script src="./animations.js"></script>
-
-<script>
-  if (window.DAISY_CONFIG) {
-    const c = DAISY_CONFIG;
-
-    document.getElementById("cmdSupport").href = c.links.support;
-    document.getElementById("footerCopy").textContent = c.footer.copyright;
-  }
-</script>
 
 </body>
 </html>
