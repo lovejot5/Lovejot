@@ -31,6 +31,8 @@ Object.entries({
   heroInvite:"invite",
   heroSupport:"support",
 
+  ctaInvite:"invite",
+
   fHome:"home",
   fCommands:"commands",
   fDocs:"docs",
