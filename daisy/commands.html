@@ -15,6 +15,7 @@
 
 <body>
 
+<!-- ================= HEADER ================= -->
 <header class="header">
   <div class="header-inner">
     <div class="logo">
@@ -44,6 +45,7 @@
 
 <div class="menu-backdrop" id="menuBackdrop"></div>
 
+<!-- ================= MAIN ================= -->
 <main>
 
 <section class="hero docs-hero">
@@ -66,7 +68,7 @@
       Select a category to view related commands.
     </p>
 
-    <!-- CATEGORY DROPDOWN ONLY -->
+    <!-- CATEGORY DROPDOWN -->
     <div class="command-controls" style="justify-content:center;">
       <div class="category-dropdown" id="categoryDropdown">
         <button class="category-btn" id="categoryBtn">
@@ -136,4 +138,98 @@
       <div class="command-row" data-category="playlists"><strong>/pl-delete</strong><span>Delete a playlist</span></div>
 
       <!-- SPOTIFY -->
-      <div class="command-row" data-category="spotify
+      <div class="command-row" data-category="spotify"><strong>/spotify-connect</strong><span>Connect Spotify account</span></div>
+      <div class="command-row" data-category="spotify"><strong>/spotify-playlists</strong><span>View Spotify playlists</span></div>
+      <div class="command-row" data-category="spotify"><strong>/spotifyunlink</strong><span>Unlink Spotify account</span></div>
+
+      <!-- FILTERS -->
+      <div class="command-row" data-category="filters"><strong>/reset</strong><span>Reset audio filters</span></div>
+      <div class="command-row" data-category="filters"><strong>/bassboost</strong><span>Apply bass boost filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/superbass</strong><span>Apply superbass filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/boost</strong><span>Apply boost filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/soft</strong><span>Apply soft filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/warm</strong><span>Apply warm filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/classical</strong><span>Apply classical filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/hiphop</strong><span>Apply hip-hop filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/jazz</strong><span>Apply jazz filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/pop</strong><span>Apply pop filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/rock</strong><span>Apply rock filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/bright</strong><span>Apply bright filter</span></div>
+      <div class="command-row" data-category="filters"><strong>/treble</strong><span>Apply treble filter</span></div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <img src="https://i.ibb.co/xtmF1NCG/ffbb6459c2cec57ca99cf73c35cd9084.png" alt="Daisy" />
+        Daisy
+      </div>
+      <p class="footer-tagline">A Discord music bot.</p>
+    </div>
+
+    <div class="footer-cols">
+      <div>
+        <h4>Navigation</h4>
+        <a id="fHome">Home</a>
+        <a id="fCommands">Commands</a>
+        <a id="fDocs">Docs</a>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <a id="fInvite">Invite Bot</a>
+        <a id="fSupport">Support Server</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span id="footerCopy"></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FILTER SCRIPT ================= -->
+<script>
+const rows = document.querySelectorAll(".command-row");
+const dropdown = document.getElementById("categoryDropdown");
+const btn = document.getElementById("categoryBtn");
+const options = document.querySelectorAll(".cat-option");
+
+let currentCategory = "all";
+
+function filterCommands() {
+  rows.forEach(row => {
+    const matchCat = currentCategory === "all" || row.dataset.category === currentCategory;
+    row.style.display = matchCat ? "flex" : "none";
+  });
+}
+
+btn.addEventListener("click", () => dropdown.classList.toggle("open"));
+
+options.forEach(opt => {
+  opt.addEventListener("click", () => {
+    currentCategory = opt.dataset.value;
+    btn.innerHTML = opt.textContent + ' <span class="arrow">▾</span>';
+    dropdown.classList.remove("open");
+    filterCommands();
+  });
+});
+
+document.addEventListener("click", e => {
+  if (!dropdown.contains(e.target)) dropdown.classList.remove("open");
+});
+</script>
+
+</body>
+</html>
