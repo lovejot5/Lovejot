@@ -535,6 +535,34 @@ main{padding-top:200px}
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.feature-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.15rem;
+}
+
+.feature-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* Icon Colors */
+.icon-spotify   { background: linear-gradient(135deg, #1db954, #1ed760); }
+.icon-playlist  { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+.icon-nowplaying{ background: linear-gradient(135deg, #fd79a8, #ffb6c1); }
+.icon-controls  { background: linear-gradient(135deg, #0984e3, #74b9ff); }
+.icon-import    { background: linear-gradient(135deg, #00b894, #55efc4); }
+.icon-addsong   { background: linear-gradient(135deg, #e17055, #fab1a0); }
+.icon-search    { background: linear-gradient(135deg, #636e72, #b2bec3); }
+.icon-247       { background: linear-gradient(135deg, #00cec9, #81ecec); }
+.icon-volume    { background: linear-gradient(135deg, #d63031, #ff7675); }
+.icon-queue     { background: linear-gradient(135deg, #fdcb6e, #ffeaa7); }
+.icon-ui        { background: linear-gradient(135deg, #2d3436, #636e72); }
+.icon-hub       { background: linear-gradient(135deg, #6c5ce7, #00cec9); }
 /* ================= CTA ================= */
 
 .docs-cta {
