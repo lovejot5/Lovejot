@@ -8,7 +8,7 @@ const DAISY_CONFIG={
     invite:"https://discord.com/oauth2/authorize?client_id=1136316909344796672&permissions=8836764482928609&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2FRqQsbNE7G4&integration_type=0&scope=bot+guilds",
     support:"https://discord.gg/RqQsbNE7G4"
   },
-  stats:{servers:"450+",users:"200K+",uptime:"99.9%"},
+  stats:{servers:"500+",users:"200K+",uptime:"99.9%"},
   footer:{copyright:"© 2026 Daisy Music. All rights reserved."}
 };
 window.DAISY_CONFIG=DAISY_CONFIG;
